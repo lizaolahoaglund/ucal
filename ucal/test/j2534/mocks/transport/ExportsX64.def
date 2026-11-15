@@ -1,0 +1,20 @@
+LIBRARY UcalJ2534TestRuntime
+EXPORTS
+    PassThruOpen
+    PassThruClose
+    PassThruConnect
+    PassThruDisconnect
+    PassThruReadMsgs
+    PassThruWriteMsgs
+    PassThruStartMsgFilter
+    PassThruStopMsgFilter
+    PassThruReadVersion
+    PassThruGetLastError
+    PassThruIoctl
+    PassThruStartPeriodicMsg
+    PassThruStopPeriodicMsg
+    PassThruSetProgrammingVoltage
+    UcalFixtureGetCanTiming
+    UcalFixtureEnumeratePorts
+    UcalJ2534DiscoverV1
+    UcalJ2534DiscoverV2

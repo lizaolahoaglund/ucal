@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><UcalRoot Condition="'$(UcalRoot)'==''">$(MSBuildThisFileDirectory)..\..\..\..\ucal\</UcalRoot><ProjectGuid>{C1B776F7-D152-48DE-9FAE-8EC26DE9A648}</ProjectGuid><Keyword>Win32Proj</Keyword><RootNamespace>UcalPcanBasicTestRuntime</RootNamespace><ProjectName>UcalPcanBasicTestRuntime</ProjectName></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><WholeProgramOptimization>true</WholeProgramOptimization></PropertyGroup>
+  <Import Project="$(UcalRoot)plugin.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'"><Link><ModuleDefinitionFile>ExportsX86.def</ModuleDefinitionFile></Link></ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x64'"><Link><ModuleDefinitionFile>ExportsX64.def</ModuleDefinitionFile></Link></ItemDefinitionGroup>
+  <PropertyGroup><TargetName>UcalPcanBasicTestRuntime</TargetName></PropertyGroup>
+  <ItemGroup><ClCompile Include="PcanBasicTestRuntime.cpp" /></ItemGroup>
+  <ItemGroup><None Include="ExportsX86.def" /><None Include="ExportsX64.def" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

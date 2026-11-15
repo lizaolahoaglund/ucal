@@ -1,0 +1,20 @@
+{
+  "schema": "org.ucal.plugin-source-package/2",
+  "id": "peak_j2534",
+  "kind": "backend",
+  "visibility": "public",
+  "runtime_files": [
+    {
+      "root": "x64",
+      "source": "UcalJ2534PeakDiscovery.dll",
+      "destination": "runtime/x64/discovery/UcalJ2534PeakDiscovery.dll"
+    },
+    {
+      "root": "x86",
+      "source": "UcalJ2534PeakDiscovery.dll",
+      "destination": "runtime/x86/discovery/UcalJ2534PeakDiscovery.dll"
+    }
+  ],
+  "source_files": [],
+  "backends": []
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "org.ucal.frontend-package/2",
+  "id": "pcanview",
+  "name": "PEAK PCAN-View",
+  "version": "0.9.0",
+  "implementation": "dll",
+  "operations": [
+    "scan",
+    "inspect",
+    "check_compatibility",
+    "prepare_launch"
+  ],
+  "maximum_can_channels": 1,
+  "full_access": true,
+  "library": "{architecture}/UcalFrontendPcanView.dll",
+  "integrations": {
+    "native": {
+      "en": "Native plugin / UCAL API",
+      "zh-CN": "原生插件 / UCAL API",
+      "de": "Natives Plugin / UCAL API",
+      "ja": "ネイティブプラグイン / UCAL API"
+    },
+    "pcanview5-6-structural-adapter": {
+      "en": "PCAN-View 5/6",
+      "zh-CN": "PCAN-View 5/6",
+      "de": "PCAN-View 5/6",
+      "ja": "PCAN-View 5/6"
+    },
+    "pcanview6-structural-adapter": {
+      "en": "PCAN-View 5/6",
+      "zh-CN": "PCAN-View 5/6",
+      "de": "PCAN-View 5/6",
+      "ja": "PCAN-View 5/6"
+    }
+  },
+  "compatibility_ready": {
+    "en": "PCAN-View 5/6 x64 · available",
+    "zh-CN": "PCAN-View 5/6 x64 · 可创建应用",
+    "de": "PCAN-View 5/6 x64 · verfügbar",
+    "ja": "PCAN-View 5/6 x64 · 利用可能"
+  },
+  "compatibility_unavailable": {
+    "en": "Unsupported: the existing comparator is limited to PCAN-View 5/6 x64",
+    "zh-CN": "不支持：现有比较器仅适用于 PCAN-View 5/6 x64",
+    "de": "Nicht unterstützt: Die vorhandene Vergleichsroute ist auf PCAN-View 5/6 x64 begrenzt",
+    "ja": "未対応：既存の比較経路は PCAN-View 5/6 x64 に限定されています"
+  },
+  "configuration_file": {
+    "enabled": false
+  },
+  "refresh_integration": false,
+  "description": {
+    "en": "PCAN-View installation discovery and version-pinned executable compatibility launch.",
+    "zh-CN": "发现已安装的 PCAN-View，并使用对应版本的可执行程序兼容路径启动。",
+    "de": "PCAN-View-Erkennung und versionsgebundener Kompatibilitätsstart.",
+    "ja": "PCAN-View の検出とバージョン固定の互換起動。"
+  }
+}

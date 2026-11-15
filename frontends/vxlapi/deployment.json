@@ -1,0 +1,82 @@
+{
+  "schema": "org.ucal.api-deployment-profile/1",
+  "id": "vxlapi",
+  "entry_points": [
+    "xlOpenDriver"
+  ],
+  "capability_schema": "org.ucal.vxl-client-capability/1",
+  "backup_schema": "org.ucal.vxl-client-deployment-backup/2",
+  "architectures": {
+    "x86": {
+      "import_name": "vxlapi.dll",
+      "files": [
+        {
+          "name": "vxlapi.dll",
+          "source_key": "FrontendDll",
+          "required_exports": []
+        },
+        {
+          "name": "UcalXlDiscovery.dll",
+          "source_key": "DiscoveryDll",
+          "required_exports": [
+            "xlOpenDriver",
+            "xlCloseDriver",
+            "xlGetDriverConfig"
+          ]
+        },
+        {
+          "name": "UcalVectorSupport.dll",
+          "source_key": "SupportDll",
+          "source_adjacent_to": "FrontendDll",
+          "required_exports": [
+            "xlOpenDriver",
+            "xlCloseDriver"
+          ]
+        }
+      ]
+    },
+    "x64": {
+      "import_name": "vxlapi64.dll",
+      "files": [
+        {
+          "name": "vxlapi64.dll",
+          "source_key": "FrontendDll",
+          "required_exports": []
+        },
+        {
+          "name": "UcalXlDiscovery64.dll",
+          "source_key": "DiscoveryDll",
+          "required_exports": [
+            "xlOpenDriver",
+            "xlCloseDriver",
+            "xlGetDriverConfig"
+          ]
+        },
+        {
+          "name": "UcalVectorSupport64.dll",
+          "source_key": "SupportDll",
+          "source_adjacent_to": "FrontendDll",
+          "required_exports": [
+            "xlOpenDriver",
+            "xlCloseDriver"
+          ]
+        }
+      ]
+    }
+  },
+  "legacy_backups": [
+    {
+      "schema": "org.ucal.vxl-client-deployment-backup/1",
+      "architectures": {
+        "x86": [
+          "vxlapi.dll",
+          "UcalXlDiscovery.dll"
+        ],
+        "x64": [
+          "vxlapi64.dll",
+          "UcalXlDiscovery64.dll"
+        ]
+      }
+    }
+  ]
+}

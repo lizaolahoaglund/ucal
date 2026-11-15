@@ -1,0 +1,27 @@
+{
+  "schema": "org.ucal.plugin-source-package/2",
+  "id": "canoe",
+  "kind": "frontend",
+  "visibility": "public",
+  "runtime_files": [],
+  "source_files": [
+    {
+      "source": "../../ucal/tools/generate-forwarder-def.ps1",
+      "destination": "ucal/tools/generate-forwarder-def.ps1"
+    },
+    {
+      "source": "../../ucal/tools/generate-forwarder-def.ps1",
+      "destination": "frontends/canoe/resources/generate-forwarder-def.ps1"
+    }
+  ],
+  "backends": [],
+  "private_sources": [
+    "tools/launch/**",
+    "tools/provider/**",
+    "test/Test-VectorProviderTransaction.ps1",
+    "test/res/UcalIdle.can",
+    "test/res/UcalStress*.can"
+  ],
+  "license": "LGPL-3.0-only WITH Independent-modules-exception",
+  "binary_support_license": "licenses/CompatibilitySupport.txt"
+}

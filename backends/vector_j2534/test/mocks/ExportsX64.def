@@ -1,0 +1,6 @@
+EXPORTS
+    UcalTestDiscoveryCounts
+    xlOpenDriver
+    xlCloseDriver
+    xlGetDriverConfig
+    xlGetApplConfig

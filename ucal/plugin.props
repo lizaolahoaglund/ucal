@@ -1,0 +1,17 @@
+<Project>
+  <!-- Import after Microsoft.Cpp.Default.props and before Microsoft.Cpp.props. -->
+  <PropertyGroup>
+    <UcalRoot Condition="'$(UcalRoot)'==''">$(MSBuildThisFileDirectory)</UcalRoot>
+    <PlatformToolset Condition="'$(PlatformToolset)'==''">$(DefaultPlatformToolset)</PlatformToolset>
+    <WindowsTargetPlatformVersion Condition="'$(WindowsTargetPlatformVersion)'==''">10.0</WindowsTargetPlatformVersion>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(UcalRoot)include;$(UcalRoot)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;NOMINMAX;UNICODE;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+</Project>

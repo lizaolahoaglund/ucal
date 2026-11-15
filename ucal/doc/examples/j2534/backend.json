@@ -1,0 +1,15 @@
+{
+  "schema": "org.ucal.backend-package/4",
+  "id": "example-j2534",
+  "name": "Example J2534",
+  "vendor": "Example",
+  "version": "1.0.0",
+  "type": "j2534-0404-gmw17753",
+  "library": "runtime/x64/VendorJ2534.dll",
+  "capabilities": "CAN / ISO CAN FD / BRS",
+  "configurationTool": {
+    "program": "runtime/x64/VendorConfig.exe",
+    "arguments": []
+  },
+  "discoveryLibrary": "x64/UcalExampleDiscovery.dll"
+}

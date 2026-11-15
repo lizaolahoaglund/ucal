@@ -1,0 +1,16 @@
+LIBRARY UcalJ2534StandardRuntime
+EXPORTS
+    PassThruOpen
+    PassThruClose
+    PassThruConnect
+    PassThruDisconnect
+    PassThruReadMsgs
+    PassThruWriteMsgs
+    PassThruStartMsgFilter
+    PassThruStopMsgFilter
+    PassThruReadVersion
+    PassThruGetLastError
+    PassThruIoctl
+    PassThruStartPeriodicMsg
+    PassThruStopPeriodicMsg
+    PassThruSetProgrammingVoltage

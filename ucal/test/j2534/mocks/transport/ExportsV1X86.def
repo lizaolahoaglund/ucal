@@ -1,0 +1,19 @@
+LIBRARY UcalJ2534V1Runtime
+EXPORTS
+    PassThruOpen=_PassThruOpen@8
+    PassThruClose=_PassThruClose@4
+    PassThruConnect=_PassThruConnect@20
+    PassThruDisconnect=_PassThruDisconnect@4
+    PassThruReadMsgs=_PassThruReadMsgs@16
+    PassThruWriteMsgs=_PassThruWriteMsgs@16
+    PassThruStartMsgFilter=_PassThruStartMsgFilter@24
+    PassThruStopMsgFilter=_PassThruStopMsgFilter@8
+    PassThruReadVersion=_PassThruReadVersion@16
+    PassThruGetLastError=_PassThruGetLastError@4
+    PassThruIoctl=_PassThruIoctl@16
+    PassThruStartPeriodicMsg=_PassThruStartPeriodicMsg@16
+    PassThruStopPeriodicMsg=_PassThruStopPeriodicMsg@8
+    PassThruSetProgrammingVoltage=_PassThruSetProgrammingVoltage@12
+    UcalFixtureGetCanTiming=_UcalFixtureGetCanTiming@8
+    UcalFixtureEnumeratePorts=_UcalFixtureEnumeratePorts@16
+    UcalJ2534DiscoverV1

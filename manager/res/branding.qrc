@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/UcalManager">
+    <file alias="ucal.png">ucal.png</file>
+  </qresource>
+</RCC>

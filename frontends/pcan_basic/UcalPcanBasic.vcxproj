@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><UcalRoot Condition="'$(UcalRoot)'==''">$(MSBuildThisFileDirectory)..\..\ucal\</UcalRoot><ProjectGuid>{4B981C8C-F53D-4F1A-895F-FF1E52D70334}</ProjectGuid><Keyword>Win32Proj</Keyword><RootNamespace>UcalPcanFrontend</RootNamespace><ProjectName>UcalPcanBasic</ProjectName></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><WholeProgramOptimization>true</WholeProgramOptimization></PropertyGroup>
+  <Import Project="$(UcalRoot)plugin.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><PcanTargetName Condition="'$(PcanTargetName)'==''">PCANBasic</PcanTargetName><TargetName>$(PcanTargetName)</TargetName></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile><AdditionalIncludeDirectories>$(UcalRoot)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories></ClCompile>
+    <Link><ModuleDefinitionFile>src\PcanBasic.def</ModuleDefinitionFile><SubSystem>Windows</SubSystem></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClInclude Include="src\PcanAbi.hpp" /></ItemGroup>
+  <ItemGroup><ClCompile Include="src\PcanBasic.cpp" /></ItemGroup>
+  <ItemGroup><None Include="src\PcanBasic.def" /></ItemGroup>
+  <ItemGroup><ProjectReference Include="$(UcalRoot)Ucal.vcxproj"><Project>{80F2B067-7FB7-4A17-8C76-E6BD70B40501}</Project></ProjectReference></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

@@ -1,0 +1,14 @@
+{
+  "id": "vector_j2534",
+  "helper": "UcalJ2534VectorDiscovery.dll",
+  "mock": "UcalVectorDiscoveryTestRuntime.dll",
+  "native_names": {
+    "x64": "vxlapi64.dll",
+    "Win32": "vxlapi.dll"
+  },
+  "scenario": "public-shared",
+  "modes": [
+    "normal",
+    "oversized"
+  ]
+}

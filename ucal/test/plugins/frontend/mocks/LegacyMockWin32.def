@@ -1,0 +1,2 @@
+EXPORTS
+    ucal_frontend_get_api=UcalFrontendGetApi

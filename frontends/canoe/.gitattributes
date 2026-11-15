@@ -1,0 +1,4 @@
+# Compatibility implementation is distributed as an independent binary support package.
+/tools/launch/** export-ignore
+/tools/provider/** export-ignore
+/test/Test-VectorProviderTransaction.ps1 export-ignore

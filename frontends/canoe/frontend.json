@@ -1,0 +1,59 @@
+{
+  "schema": "org.ucal.frontend-package/2",
+  "id": "canoe",
+  "name": "Vector CANoe",
+  "version": "0.9.0",
+  "implementation": "dll",
+  "operations": [
+    "scan",
+    "inspect",
+    "check_compatibility",
+    "prepare_launch"
+  ],
+  "maximum_can_channels": 16,
+  "full_access": true,
+  "library": "{architecture}/UcalFrontendCanoe.dll",
+  "integrations": {
+    "native": {
+      "en": "Native plugin / UCAL API",
+      "zh-CN": "原生插件 / UCAL API",
+      "de": "Natives Plugin / UCAL API",
+      "ja": "ネイティブプラグイン / UCAL API"
+    },
+    "canoe-provider": {
+      "en": "CANoe",
+      "zh-CN": "CANoe",
+      "de": "CANoe",
+      "ja": "CANoe"
+    },
+    "vxl-process-route": {
+      "en": "CANoe / Vector XL",
+      "zh-CN": "CANoe / Vector XL",
+      "de": "CANoe / Vector XL",
+      "ja": "CANoe / Vector XL"
+    }
+  },
+  "compatibility_ready": {
+    "en": "CANoe 11 / 12 x64 · available",
+    "zh-CN": "CANoe 11 / 12 x64 · 可创建应用",
+    "de": "CANoe 11 / 12 x64 · verfügbar",
+    "ja": "CANoe 11 / 12 x64 · 利用可能"
+  },
+  "compatibility_unavailable": {
+    "en": "Unsupported CANoe version or architecture for the evidenced route",
+    "zh-CN": "此 CANoe 版本或架构不在已有证据的路线范围内",
+    "de": "CANoe-Version oder Architektur wird von der belegten Route nicht unterstützt",
+    "ja": "この CANoe バージョンまたはアーキテクチャは実証済み経路の対象外です"
+  },
+  "configuration_file": {
+    "enabled": true,
+    "filter": "CANoe (*.cfg)"
+  },
+  "refresh_integration": true,
+  "description": {
+    "en": "CANoe installation discovery and application-local compatibility launch.",
+    "zh-CN": "发现已安装的 CANoe，并使用应用本地兼容路径启动。",
+    "de": "CANoe-Erkennung und anwendungslokaler Kompatibilitätsstart.",
+    "ja": "CANoe の検出とアプリローカル互換起動。"
+  }
+}

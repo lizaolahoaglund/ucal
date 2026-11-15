@@ -1,0 +1,29 @@
+{
+  "schema": "org.ucal.api-deployment-profile/1",
+  "id": "pcan_basic",
+  "entry_points": ["CAN_Initialize", "CAN_InitializeFD"],
+  "capability_schema": "org.ucal.pcan-basic-client-capability/1",
+  "backup_schema": "org.ucal.pcan-basic-client-deployment-backup/1",
+  "architectures": {
+    "x86": {
+      "import_name": "PCANBasic.dll",
+      "files": [
+        {
+          "name": "PCANBasic.dll",
+          "source_key": "FrontendDll",
+          "required_exports": []
+        }
+      ]
+    },
+    "x64": {
+      "import_name": "PCANBasic.dll",
+      "files": [
+        {
+          "name": "PCANBasic.dll",
+          "source_key": "FrontendDll",
+          "required_exports": []
+        }
+      ]
+    }
+  }
+}

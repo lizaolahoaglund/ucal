@@ -1,0 +1,12 @@
+LIBRARY UcalPcanBasicTestRuntime
+EXPORTS
+    CAN_Initialize
+    CAN_InitializeFD
+    CAN_Uninitialize
+    CAN_GetStatus
+    CAN_Read
+    CAN_ReadFD
+    CAN_Write
+    CAN_WriteFD
+    CAN_GetValue
+    CAN_SetValue

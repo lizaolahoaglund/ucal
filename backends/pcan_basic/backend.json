@@ -1,0 +1,23 @@
+{
+  "schema": "org.ucal.backend-package/5",
+  "id": "pcan-basic",
+  "name": "PEAK PCAN-Basic",
+  "vendor": "PEAK",
+  "version": "0.9.0",
+  "type": "ucal",
+  "library": "x64/UcalBackendPcanBasic.dll",
+  "backend_family": "pcan-basic",
+  "capabilities": "CAN / ISO CAN FD / BRS",
+  "preserve_endpoint_identity": true,
+  "broker_aliases": [
+    "PCAN"
+  ],
+  "isolated": false,
+  "endpoint_presentation": {
+    "family": "PCAN-Basic",
+    "handle_first": 81,
+    "handle_last": 95,
+    "handle_offset": 80,
+    "fallback_description": "Live / channel-handle identity fallback"
+  }
+}

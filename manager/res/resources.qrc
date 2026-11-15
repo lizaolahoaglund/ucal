@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/ucal/review">
+    <file>demo.json</file>
+    <file>realistic.json</file>
+  </qresource>
+</RCC>

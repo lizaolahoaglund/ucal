@@ -1,0 +1,19 @@
+{
+  "schema": "org.ucal.backend-package/5",
+  "id": "vector-xl",
+  "name": "Vector XL",
+  "vendor": "Vector",
+  "version": "0.9.0",
+  "type": "ucal",
+  "library": "x64/UcalBackendVectorXl.dll",
+  "backend_family": "vector-xl",
+  "capabilities": "CAN / ISO CAN FD / BRS",
+  "preserve_endpoint_identity": true,
+  "broker_aliases": [
+    "VECTOR"
+  ],
+  "isolated": false,
+  "endpoint_presentation": {
+    "family": "Vector XL"
+  }
+}

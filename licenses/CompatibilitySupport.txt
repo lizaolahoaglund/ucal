@@ -1,0 +1,20 @@
+UCAL compatibility support binary license
+
+The respective copyright holders grant a worldwide, royalty-free, non-exclusive
+license to use and copy the original UCAL compatibility support binaries and to
+redistribute them unmodified, together with this notice, for use with UCAL or
+software using its published interfaces.
+
+This permission covers only the support binaries supplied by their copyright
+holders. It grants no source-code license and no rights to vendor applications,
+drivers, SDKs, trademarks or other separately licensed components. Preserve all
+applicable third-party notices and terms. No vendor endorsement is implied.
+
+The support binaries are provided AS IS, without warranty of any kind, including
+merchantability, fitness for a particular purpose and noninfringement. To the
+extent permitted by applicable law, the copyright holders are not liable for
+claims or damages arising from their use.
+
+Nothing in this notice limits rights granted by the licenses of UCAL's covered
+public components or third-party libraries, including rights to their source,
+modification, replacement or debugging. Those components retain their own terms.

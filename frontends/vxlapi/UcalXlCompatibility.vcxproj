@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><UcalRoot Condition="'$(UcalRoot)'==''">$(MSBuildThisFileDirectory)..\..\ucal\</UcalRoot><ProjectGuid>{84359DBB-82D5-4CE3-B7B3-D48093774065}</ProjectGuid><Keyword>Win32Proj</Keyword><RootNamespace>UcalXlFrontend</RootNamespace><ProjectName>UcalXlCompatibility</ProjectName></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><WholeProgramOptimization>false</WholeProgramOptimization></PropertyGroup>
+  <Import Project="$(UcalRoot)plugin.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><TargetName Condition="'$(Platform)'=='x64'">vxlapi64</TargetName><TargetName Condition="'$(Platform)'=='Win32'">vxlapi</TargetName></PropertyGroup>
+  <PropertyGroup><IntDir>$(UcalRepositoryRoot)out\build\UcalXlProxy\$(Platform)\$(Configuration)\</IntDir></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile><AdditionalIncludeDirectories>$(UcalRoot)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories><PreprocessorDefinitions>UCAL_XL_STANDALONE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+    <Link><ModuleDefinitionFile Condition="'$(Platform)'=='Win32'">src\XlProxyX86.def</ModuleDefinitionFile><ModuleDefinitionFile Condition="'$(Platform)'=='x64'">src\XlProxyX64.def</ModuleDefinitionFile><SubSystem>Windows</SubSystem><NoEntryPoint>true</NoEntryPoint><IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries><AdditionalDependencies>$(IntDir)UcalVectorSupportImport.lib;%(AdditionalDependencies)</AdditionalDependencies></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClInclude Include="src\XlAbi.hpp" /></ItemGroup>
+  <ItemGroup><ClCompile Include="src\XlProxy.cpp" /></ItemGroup>
+  <ItemGroup><None Include="src\XlProxyX86.def" /><None Include="src\XlProxyX64.def" /></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="UcalXlDiscovery.vcxproj"><Project>{A93D6E9A-F2B5-4EB6-8D95-83AABFD649A4}</Project><LinkLibraryDependencies>false</LinkLibraryDependencies><ReferenceOutputAssembly>false</ReferenceOutputAssembly></ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="UcalVectorSupport.vcxproj" Condition="'$(UcalBuildPrivateSupport)'!='false' And Exists('src/XlRuntime.cpp') And Exists('UcalVectorSupport.vcxproj')"><Project>{BF0441D3-4BB2-4A40-BC6A-7DBF34834FA2}</Project><LinkLibraryDependencies>false</LinkLibraryDependencies><ReferenceOutputAssembly>false</ReferenceOutputAssembly></ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <UcalSupportTargetArchitecture Condition="'$(Platform)'=='Win32'">x86</UcalSupportTargetArchitecture>
+    <UcalSupportTargetArchitecture Condition="'$(Platform)'=='x64'">x64</UcalSupportTargetArchitecture>
+    <UcalSupportImportDef Condition="'$(Platform)'=='Win32'">$(MSBuildThisFileDirectory)src\XlSupportImportX86.def</UcalSupportImportDef>
+    <UcalSupportImportDef Condition="'$(Platform)'=='x64'">$(MSBuildThisFileDirectory)src\XlSupportImportX64.def</UcalSupportImportDef>
+    <PreferredToolArchitecture Condition="'$(PreferredToolArchitecture)'==''">x86</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Target Name="GenerateUcalVectorSupportImportLibrary" BeforeTargets="Link" Inputs="$(UcalSupportImportDef)" Outputs="$(IntDir)UcalVectorSupportImport.lib">
+    <MakeDir Directories="$(IntDir)" />
+    <Exec Command="&quot;$(VCToolsInstallDir)bin\Host$(PreferredToolArchitecture)\$(UcalSupportTargetArchitecture)\lib.exe&quot; /nologo /machine:$(UcalSupportTargetArchitecture) /def:&quot;$(UcalSupportImportDef)&quot; /out:&quot;$(IntDir)UcalVectorSupportImport.lib&quot;" />
+  </Target>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

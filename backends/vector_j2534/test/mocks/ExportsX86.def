@@ -1,0 +1,6 @@
+EXPORTS
+    UcalTestDiscoveryCounts
+    xlOpenDriver=_xlOpenDriver@0
+    xlCloseDriver=_xlCloseDriver@0
+    xlGetDriverConfig=_xlGetDriverConfig@4
+    xlGetApplConfig=_xlGetApplConfig@24

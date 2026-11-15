@@ -1,0 +1,15 @@
+{
+  "id": "peak_j2534",
+  "helper": "UcalJ2534PeakDiscovery.dll",
+  "mock": "UcalPeakDiscoveryTestRuntime.dll",
+  "native_names": {
+    "x64": "PCANBasic.dll",
+    "Win32": "PCANBasic.dll"
+  },
+  "scenario": "public-port-no-init",
+  "modes": [
+    "normal",
+    "oversized",
+    "no-identity"
+  ]
+}

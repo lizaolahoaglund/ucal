@@ -1,0 +1,5 @@
+LIBRARY UcalForwarderFixture
+EXPORTS
+    UcalFixtureAlpha=UcalFixtureAlpha @1
+    UcalFixtureBeta=UcalFixtureBeta @3
+    UcalFixtureGamma @5 NONAME

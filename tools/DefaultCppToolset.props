@@ -1,0 +1,7 @@
+<Project>
+  <!-- DefaultPlatformToolset is available after Microsoft.Cpp.Default.props.
+       Set it before Cpp.props falls back to the legacy VS2010 toolset. -->
+  <PropertyGroup>
+    <PlatformToolset Condition="'$(PlatformToolset)'==''">$(DefaultPlatformToolset)</PlatformToolset>
+  </PropertyGroup>
+</Project>

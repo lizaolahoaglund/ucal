@@ -1,0 +1,11 @@
+{
+  "runtime_environment": "UCAL_VECTOR_XL_RUNTIME",
+  "requires_termination": false,
+  "supports_termination": false,
+  "requires_tx_completion": true,
+  "timing_readback": "driver-configuration-call-accepted",
+  "supports_tx_completion": true,
+  "submission_correlated": true,
+  "filter_rejection_requires_self_receive": true,
+  "echo_environment": ""
+}

@@ -1,0 +1,11 @@
+# Compatibility implementation is distributed as an independent binary support package.
+/src/bridge/** export-ignore
+/res/ucal_pcanview_native_profiles.json export-ignore
+/tools/** export-ignore
+/test/native_hook/** export-ignore
+/test/bridge/** export-ignore
+/doc/bridge/** export-ignore
+/doc/tools/** export-ignore
+/UcalPcanViewNativeAdapter.vcxproj export-ignore
+/UcalPcanViewSupport.vcxproj export-ignore
+/CompiledProfiles.targets export-ignore

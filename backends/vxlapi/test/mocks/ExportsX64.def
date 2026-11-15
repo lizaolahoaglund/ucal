@@ -1,0 +1,20 @@
+LIBRARY UcalVectorXlTestRuntime
+EXPORTS
+    xlOpenDriver
+    xlCloseDriver
+    xlGetDriverConfig
+    xlOpenPort
+    xlClosePort
+    xlActivateChannel
+    xlDeactivateChannel
+    xlCanSetChannelBitrate
+    xlCanSetChannelParams
+    xlCanFdSetConfiguration
+    xlCanSetChannelOutput
+    xlCanSetChannelMode
+    xlCanResetAcceptance
+    xlCanTransmit
+    xlCanTransmitEx
+    xlReceive
+    xlCanReceive
+    xlCanRequestChipState

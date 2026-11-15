@@ -1,0 +1,20 @@
+LIBRARY UcalVectorXlTestRuntime
+EXPORTS
+    xlOpenDriver=_xlOpenDriver@0
+    xlCloseDriver=_xlCloseDriver@0
+    xlGetDriverConfig=_xlGetDriverConfig@4
+    xlOpenPort=_xlOpenPort@32
+    xlClosePort=_xlClosePort@4
+    xlActivateChannel=_xlActivateChannel@20
+    xlDeactivateChannel=_xlDeactivateChannel@12
+    xlCanSetChannelBitrate=_xlCanSetChannelBitrate@16
+    xlCanSetChannelParams=_xlCanSetChannelParams@16
+    xlCanFdSetConfiguration=_xlCanFdSetConfiguration@16
+    xlCanSetChannelOutput=_xlCanSetChannelOutput@16
+    xlCanSetChannelMode=_xlCanSetChannelMode@20
+    xlCanResetAcceptance=_xlCanResetAcceptance@16
+    xlCanTransmit=_xlCanTransmit@20
+    xlCanTransmitEx=_xlCanTransmitEx@24
+    xlReceive=_xlReceive@12
+    xlCanReceive=_xlCanReceive@8
+    xlCanRequestChipState=_xlCanRequestChipState@12

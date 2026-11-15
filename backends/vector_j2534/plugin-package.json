@@ -1,0 +1,20 @@
+{
+  "schema": "org.ucal.plugin-source-package/2",
+  "id": "vector_j2534",
+  "kind": "backend",
+  "visibility": "public",
+  "runtime_files": [
+    {
+      "root": "x64",
+      "source": "UcalJ2534VectorDiscovery.dll",
+      "destination": "runtime/x64/discovery/UcalJ2534VectorDiscovery.dll"
+    },
+    {
+      "root": "x86",
+      "source": "UcalJ2534VectorDiscovery.dll",
+      "destination": "runtime/x86/discovery/UcalJ2534VectorDiscovery.dll"
+    }
+  ],
+  "source_files": [],
+  "backends": []
+}

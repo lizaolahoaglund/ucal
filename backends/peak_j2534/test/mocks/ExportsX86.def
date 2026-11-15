@@ -1,0 +1,3 @@
+EXPORTS
+    UcalTestDiscoveryCounts
+    CAN_GetValue=_CAN_GetValue@16

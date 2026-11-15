@@ -1,0 +1,160 @@
+{
+  "schema": "org.ucal.plugin-source-package/2",
+  "id": "vxlapi",
+  "kind": "api",
+  "visibility": "public",
+  "runtime_files": [
+    {
+      "root": "x64",
+      "source": "vxlapi64.dll",
+      "destination": "frontends/vxlapi/x64/vxlapi64.dll"
+    },
+    {
+      "root": "x64",
+      "source": "UcalXlDiscovery64.dll",
+      "destination": "frontends/vxlapi/x64/UcalXlDiscovery64.dll"
+    },
+    {
+      "root": "x64",
+      "source": "UcalVectorSupport64.dll",
+      "destination": "frontends/vxlapi/x64/UcalVectorSupport64.dll"
+    },
+    {
+      "root": "x64",
+      "source": "UcalVcndrvmsDataIntercept64.dll",
+      "destination": "frontends/canoe/x64/UcalVcndrvmsDataIntercept64.dll"
+    },
+    {
+      "root": "x64",
+      "source": "UcalCanoeProvider64.dll",
+      "destination": "frontends/canoe/x64/UcalCanoeProvider64.dll"
+    },
+    {
+      "root": "x86",
+      "source": "vxlapi.dll",
+      "destination": "frontends/vxlapi/x86/vxlapi.dll"
+    },
+    {
+      "root": "x86",
+      "source": "UcalXlDiscovery.dll",
+      "destination": "frontends/vxlapi/x86/UcalXlDiscovery.dll"
+    },
+    {
+      "root": "x86",
+      "source": "UcalVectorSupport.dll",
+      "destination": "frontends/vxlapi/x86/UcalVectorSupport.dll"
+    },
+    {
+      "root": "x86",
+      "source": "UcalVcndrvmsDataIntercept.dll",
+      "destination": "frontends/canoe/x86/UcalVcndrvmsDataIntercept.dll"
+    },
+    {
+      "root": "x86",
+      "source": "UcalCanoeProvider.dll",
+      "destination": "frontends/canoe/x86/UcalCanoeProvider.dll"
+    }
+  ],
+  "source_files": [
+    {
+      "source": "tools/Set-UcalVxlClientDeployment.ps1",
+      "destination": "tools/vxl-client/Set-UcalVxlClientDeployment.ps1"
+    },
+    {
+      "source": "tools/Set-UcalVxlClientDeployment.ps1",
+      "destination": "frontends/canoe/resources/Set-UcalVxlClientDeployment.ps1"
+    },
+    {
+      "source": "../../ucal/tools/UcalPeContract.psm1",
+      "destination": "tools/vxl-client/UcalPeContract.psm1"
+    },
+    {
+      "source": "../../ucal/tools/UcalPeContract.psm1",
+      "destination": "frontends/canoe/resources/UcalPeContract.psm1"
+    },
+    {
+      "source": "doc/Usage.md",
+      "destination": "tools/vxl-client/README.md"
+    },
+    {
+      "source": "doc/Usage.md",
+      "destination": "frontends/canoe/resources/README.md"
+    },
+    {
+      "source": "tools/Set-UcalVxlClientDeployment.ps1",
+      "destination": "frontends/canoe/tools/vxl/Set-UcalVxlClientDeployment.ps1"
+    },
+    {
+      "source": "../../ucal/tools/UcalPeContract.psm1",
+      "destination": "frontends/canoe/tools/vxl/UcalPeContract.psm1"
+    },
+    {
+      "source": "doc/Usage.md",
+      "destination": "frontends/canoe/tools/vxl/README.md"
+    },
+    {
+      "source": "tools/Set-UcalVxlClientDeployment.ps1",
+      "destination": "frontends/vxlapi/tools/Set-UcalVxlClientDeployment.ps1"
+    },
+    {
+      "source": "deployment.json",
+      "destination": "frontends/vxlapi/tools/deployment.json"
+    },
+    {
+      "source": "../../ucal/tools/UcalApiDeployment.psm1",
+      "destination": "frontends/vxlapi/tools/UcalApiDeployment.psm1"
+    },
+    {
+      "source": "../../ucal/tools/UcalPeContract.psm1",
+      "destination": "frontends/vxlapi/tools/UcalPeContract.psm1"
+    },
+    {
+      "source": "deployment.json",
+      "destination": "tools/vxl-client/deployment.json"
+    },
+    {
+      "source": "../../ucal/tools/UcalApiDeployment.psm1",
+      "destination": "tools/vxl-client/UcalApiDeployment.psm1"
+    },
+    {
+      "source": "deployment.json",
+      "destination": "frontends/canoe/resources/deployment.json"
+    },
+    {
+      "source": "../../ucal/tools/UcalApiDeployment.psm1",
+      "destination": "frontends/canoe/resources/UcalApiDeployment.psm1"
+    },
+    {
+      "source": "deployment.json",
+      "destination": "frontends/canoe/tools/vxl/deployment.json"
+    },
+    {
+      "source": "../../ucal/tools/UcalApiDeployment.psm1",
+      "destination": "frontends/canoe/tools/vxl/UcalApiDeployment.psm1"
+    },
+    {
+      "source": "doc/Usage.md",
+      "destination": "frontends/vxlapi/README.md"
+    }
+  ],
+  "backends": [],
+  "vendor_runtime_names": [
+    "vxlapi.dll",
+    "vxlapi64.dll"
+  ],
+  "private_sources": [
+    "src/XlRuntime.cpp",
+    "src/canoe/**",
+    "canoe/**",
+    "UcalVectorSupport.vcxproj",
+    "UcalVectorProvider.vcxproj",
+    "UcalVcndrvms*.vcxproj",
+    "src/XlRuntimeX86.def",
+    "src/XlRuntimeX64.def",
+    "src/XlSupportX86.def",
+    "src/XlSupportX64.def",
+    "test/runner/**"
+  ],
+  "license": "LGPL-3.0-only WITH Independent-modules-exception",
+  "binary_support_license": "licenses/CompatibilitySupport.txt"
+}

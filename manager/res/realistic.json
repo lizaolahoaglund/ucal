@@ -1,0 +1,534 @@
+{
+  "activeProjectId": "powertrain",
+  "applications": [
+    {
+      "assignmentMode": "selected",
+      "channelCount": 4,
+      "commandLineArguments": "",
+      "configurationPath": "",
+      "createdAtUtc": "",
+      "id": "canoe-lab",
+      "integrationAdapterId": "canoe-provider",
+      "integrationName": "UCAL CANoe Provider",
+      "mappings": [
+        {
+          "bus": "CAN",
+          "endpointId": "mockapi:demo-12345:can:2",
+          "logicalChannel": 1
+        },
+        {
+          "bus": "CAN",
+          "endpointId": "pcan:demo-67890:can:0",
+          "logicalChannel": 2
+        },
+        {
+          "bus": "CAN",
+          "endpointId": "vector:demo-24680:can:0",
+          "logicalChannel": 3
+        },
+        {
+          "bus": "CAN",
+          "endpointId": "mockapi:demo-12345:can:0",
+          "logicalChannel": 4
+        }
+      ],
+      "maturity": "Engineering evidence",
+      "name": "CANoe · Gateway",
+      "shortcutCreated": true,
+      "softwareInstallationId": "canoe:12:x64:default",
+      "statusKind": "warning"
+    },
+    {
+      "assignmentMode": "full-access",
+      "channelCount": 0,
+      "commandLineArguments": "",
+      "configurationPath": "",
+      "createdAtUtc": "",
+      "id": "canoe-cal",
+      "integrationAdapterId": "canoe-provider",
+      "integrationName": "UCAL CANoe Provider",
+      "mappings": [],
+      "maturity": "Engineering evidence",
+      "name": "CANoe · Powertrain",
+      "shortcutCreated": false,
+      "softwareInstallationId": "canoe:12:x64:default",
+      "statusKind": "warning"
+    },
+    {
+      "assignmentMode": "full-access",
+      "channelCount": 0,
+      "commandLineArguments": "",
+      "configurationPath": "",
+      "createdAtUtc": "",
+      "id": "inca-cal",
+      "integrationAdapterId": "vxl-process-route",
+      "integrationName": "UCAL XL Compatibility",
+      "mappings": [],
+      "maturity": "Roadmap",
+      "name": "INCA · Calibration",
+      "shortcutCreated": false,
+      "softwareInstallationId": "inca:7:x64:default",
+      "statusKind": "muted"
+    },
+    {
+      "assignmentMode": "selected",
+      "channelCount": 1,
+      "commandLineArguments": "",
+      "configurationPath": "",
+      "createdAtUtc": "",
+      "id": "pcanview-bench",
+      "integrationAdapterId": "pcanview5-6-structural-adapter",
+      "integrationName": "UCAL PCAN Compatibility",
+      "mappings": [
+        {
+          "bus": "CAN",
+          "endpointId": "mockapi:demo-12345:can:1",
+          "logicalChannel": 1
+        }
+      ],
+      "maturity": "Engineering comparator",
+      "name": "PCAN-View · Bench",
+      "shortcutCreated": false,
+      "softwareInstallationId": "pcanview:6:x64:default",
+      "statusKind": "warning"
+    }
+  ],
+  "backendPackages": [
+    {
+      "architecture": "x86 / x64",
+      "builtIn": true,
+      "capabilities": "CAN / CAN FD / LIN",
+      "enabled": true,
+      "id": "mockapi",
+      "maturity": "Physical reference backend",
+      "name": "Example Vendor A / MOCKAPI",
+      "source": "Built-in",
+      "state": "Loaded",
+      "vendor": "Example Vendor A",
+      "version": "1.0.0"
+    },
+    {
+      "architecture": "x86 / x64",
+      "builtIn": true,
+      "capabilities": "CAN / CAN FD",
+      "enabled": true,
+      "id": "vector-xl",
+      "maturity": "Official runtime evidence; physical gated",
+      "name": "Vector XL",
+      "source": "Built-in",
+      "state": "Loaded",
+      "vendor": "Vector",
+      "version": "20.30"
+    },
+    {
+      "architecture": "x86 / x64",
+      "builtIn": true,
+      "capabilities": "CAN / CAN FD",
+      "enabled": true,
+      "id": "pcan-basic",
+      "maturity": "Bounded physical PCAN evidence; broader gates remain",
+      "name": "PEAK PCAN-Basic",
+      "source": "Built-in",
+      "state": "Loaded",
+      "vendor": "PEAK",
+      "version": "4.9"
+    },
+    {
+      "architecture": "x64",
+      "builtIn": false,
+      "capabilities": "Classic CAN",
+      "enabled": false,
+      "id": "sample-third-party",
+      "maturity": "Optional / unaccepted",
+      "name": "Example Community Backend",
+      "source": "Third-party package",
+      "state": "Disabled",
+      "vendor": "Community",
+      "version": "0.3.0"
+    }
+  ],
+  "endpointBindings": [
+    {
+      "adapterId": "mockapi:demo-12345",
+      "backendFamily": "MOCKAPI",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / LIN / termination / Tx completion",
+      "compatibilityIssue": "",
+      "firmwareVersion": "3.8.12",
+      "id": "mockapi:demo-12345:can:0",
+      "maturity": "Physical reference backend",
+      "model": "Mock CAN FD Adapter A",
+      "physicalChannel": 1,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "12345",
+      "vendor": "Example Vendor A"
+    },
+    {
+      "adapterId": "mockapi:demo-12345",
+      "backendFamily": "MOCKAPI",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / LIN / termination / Tx completion",
+      "compatibilityIssue": "",
+      "firmwareVersion": "3.8.12",
+      "id": "mockapi:demo-12345:can:1",
+      "maturity": "Physical reference backend",
+      "model": "Mock CAN FD Adapter A",
+      "physicalChannel": 2,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "12345",
+      "vendor": "Example Vendor A"
+    },
+    {
+      "adapterId": "mockapi:demo-12345",
+      "backendFamily": "MOCKAPI",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / LIN / termination / Tx completion",
+      "compatibilityIssue": "",
+      "firmwareVersion": "3.8.12",
+      "id": "mockapi:demo-12345:can:2",
+      "maturity": "Physical reference backend",
+      "model": "Mock CAN FD Adapter A",
+      "physicalChannel": 3,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "12345",
+      "vendor": "Example Vendor A"
+    },
+    {
+      "adapterId": "pcan:demo-67890",
+      "backendFamily": "PCAN-Basic",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / listen-only / timestamped Rx",
+      "compatibilityIssue": "",
+      "firmwareVersion": "5.4.1",
+      "id": "pcan:demo-67890:can:0",
+      "maturity": "Bounded physical PCAN evidence; broader gates remain",
+      "model": "PCAN-USB FD",
+      "physicalChannel": 1,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "67890",
+      "vendor": "PEAK"
+    },
+    {
+      "adapterId": "vector:demo-24680",
+      "backendFamily": "Vector XL",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / timestamped Rx / Tx result",
+      "compatibilityIssue": "",
+      "firmwareVersion": "1.34",
+      "id": "vector:demo-24680:can:0",
+      "maturity": "Official runtime evidence; physical gated",
+      "model": "VN1630A",
+      "physicalChannel": 1,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "24680",
+      "vendor": "Vector"
+    }
+  ],
+  "endpoints": [
+    {
+      "adapterId": "mockapi:demo-12345",
+      "backendFamily": "MOCKAPI",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / LIN / termination / Tx completion",
+      "compatibilityIssue": "",
+      "firmwareVersion": "3.8.12",
+      "id": "mockapi:demo-12345:can:0",
+      "maturity": "Physical reference backend",
+      "model": "Mock CAN FD Adapter A",
+      "physicalChannel": 1,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "12345",
+      "state": "online",
+      "vendor": "Example Vendor A"
+    },
+    {
+      "adapterId": "mockapi:demo-12345",
+      "backendFamily": "MOCKAPI",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / LIN / termination / Tx completion",
+      "compatibilityIssue": "",
+      "firmwareVersion": "3.8.12",
+      "id": "mockapi:demo-12345:can:1",
+      "maturity": "Physical reference backend",
+      "model": "Mock CAN FD Adapter A",
+      "physicalChannel": 2,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "12345",
+      "state": "online",
+      "vendor": "Example Vendor A"
+    },
+    {
+      "adapterId": "mockapi:demo-12345",
+      "backendFamily": "MOCKAPI",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / LIN / termination / Tx completion",
+      "compatibilityIssue": "",
+      "firmwareVersion": "3.8.12",
+      "id": "mockapi:demo-12345:can:2",
+      "maturity": "Physical reference backend",
+      "model": "Mock CAN FD Adapter A",
+      "physicalChannel": 3,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "12345",
+      "state": "online",
+      "vendor": "Example Vendor A"
+    },
+    {
+      "adapterId": "mockapi:demo-12345",
+      "backendFamily": "MOCKAPI",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / LIN / termination / Tx completion",
+      "compatibilityIssue": "",
+      "firmwareVersion": "3.8.12",
+      "id": "mockapi:demo-12345:can:3",
+      "maturity": "Physical reference backend",
+      "model": "Mock CAN FD Adapter A",
+      "physicalChannel": 4,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "12345",
+      "state": "busy",
+      "vendor": "Example Vendor A"
+    },
+    {
+      "adapterId": "pcan:demo-67890",
+      "backendFamily": "PCAN-Basic",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / listen-only / timestamped Rx",
+      "compatibilityIssue": "",
+      "firmwareVersion": "5.4.1",
+      "id": "pcan:demo-67890:can:0",
+      "maturity": "Bounded physical PCAN evidence; broader gates remain",
+      "model": "PCAN-USB FD",
+      "physicalChannel": 1,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "67890",
+      "state": "offline",
+      "vendor": "PEAK"
+    },
+    {
+      "adapterId": "vector:demo-24680",
+      "backendFamily": "Vector XL",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / timestamped Rx / Tx result",
+      "compatibilityIssue": "",
+      "firmwareVersion": "1.34",
+      "id": "vector:demo-24680:can:0",
+      "maturity": "Official runtime evidence; physical gated",
+      "model": "VN1630A",
+      "physicalChannel": 1,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "24680",
+      "state": "online",
+      "vendor": "Vector"
+    },
+    {
+      "adapterId": "vector:demo-24680",
+      "backendFamily": "Vector XL",
+      "backendInstanceId": "",
+      "backendName": "",
+      "busType": "CAN",
+      "capabilities": "CAN / CAN FD / timestamped Rx / Tx result",
+      "compatibilityIssue": "",
+      "firmwareVersion": "1.34",
+      "id": "vector:demo-24680:can:1",
+      "maturity": "Official runtime evidence; physical gated",
+      "model": "VN1630A",
+      "physicalChannel": 2,
+      "physicalIndex": "0",
+      "physicalIndexValid": false,
+      "serial": "24680",
+      "state": "online",
+      "vendor": "Vector"
+    }
+  ],
+  "projects": [
+    {
+      "applicationIds": [],
+      "id": "default",
+      "includeAllApplications": true,
+      "name": "Default"
+    },
+    {
+      "applicationIds": [
+        "canoe-cal",
+        "inca-cal"
+      ],
+      "id": "powertrain",
+      "includeAllApplications": false,
+      "name": "Powertrain calibration"
+    },
+    {
+      "applicationIds": [
+        "canoe-lab",
+        "pcanview-bench"
+      ],
+      "id": "gateway",
+      "includeAllApplications": false,
+      "name": "Gateway validation"
+    }
+  ],
+  "schemaVersion": 3,
+  "softwareBindings": [
+    {
+      "architecture": "x64",
+      "compatibility": "App-local CANoe 12 evidence; named Provider remains a candidate",
+      "compatibilityKind": "warning",
+      "displayName": "Vector CANoe",
+      "executablePath": "C:/Program Files/Vector CANoe 12/Exec64/CANoe64.exe",
+      "family": "canoe",
+      "id": "canoe:12:x64:default",
+      "integrationAdapters": [
+        "canoe-provider",
+        "native"
+      ],
+      "source": "Windows Registry",
+      "version": "12.0.75"
+    },
+    {
+      "architecture": "x64",
+      "compatibility": "Version-pinned engineering comparator",
+      "compatibilityKind": "warning",
+      "displayName": "PEAK PCAN-View",
+      "executablePath": "C:/Program Files/PEAK-System/PCAN-View 6/PCANView.exe",
+      "family": "pcanview",
+      "id": "pcanview:6:x64:default",
+      "integrationAdapters": [
+        "pcanview5-6-structural-adapter",
+        "native"
+      ],
+      "source": "Windows Registry",
+      "version": "6.0.0"
+    },
+    {
+      "architecture": "x64",
+      "compatibility": "Roadmap; not accepted",
+      "compatibilityKind": "muted",
+      "displayName": "ETAS INCA",
+      "executablePath": "C:/Program Files/ETAS/INCA7.4/Inca.exe",
+      "family": "inca",
+      "id": "inca:7:x64:default",
+      "integrationAdapters": [
+        "vxl-process-route",
+        "native"
+      ],
+      "source": "Windows App Paths",
+      "version": "7.4.7"
+    }
+  ],
+  "softwareInstallations": [
+    {
+      "architecture": "x64",
+      "available": true,
+      "compatibility": "App-local CANoe 12 evidence; named Provider remains a candidate",
+      "compatibilityKind": "warning",
+      "displayName": "Vector CANoe",
+      "executablePath": "C:/Program Files/Vector CANoe 12/Exec64/CANoe64.exe",
+      "family": "canoe",
+      "id": "canoe:12:x64:default",
+      "integrationAdapters": [
+        "canoe-provider",
+        "native"
+      ],
+      "source": "Windows Registry",
+      "version": "12.0.75"
+    },
+    {
+      "architecture": "x64",
+      "available": true,
+      "compatibility": "App-local CANoe 12 evidence; named Provider remains a candidate",
+      "compatibilityKind": "warning",
+      "displayName": "Vector CANoe",
+      "executablePath": "C:/Program Files/Vector CANoe 17/Exec64/CANoe64.exe",
+      "family": "canoe",
+      "id": "canoe:17:x64:default",
+      "integrationAdapters": [
+        "canoe-provider",
+        "native"
+      ],
+      "source": "Windows Registry",
+      "version": "17.0.20"
+    },
+    {
+      "architecture": "x64",
+      "available": true,
+      "compatibility": "Version-pinned engineering comparator",
+      "compatibilityKind": "warning",
+      "displayName": "PEAK PCAN-View",
+      "executablePath": "C:/Program Files/PEAK-System/PCAN-View 6/PCANView.exe",
+      "family": "pcanview",
+      "id": "pcanview:6:x64:default",
+      "integrationAdapters": [
+        "pcanview5-6-structural-adapter",
+        "native"
+      ],
+      "source": "Windows Registry",
+      "version": "6.0.0"
+    },
+    {
+      "architecture": "x64",
+      "available": true,
+      "compatibility": "Roadmap; not accepted",
+      "compatibilityKind": "muted",
+      "displayName": "ETAS INCA",
+      "executablePath": "C:/Program Files/ETAS/INCA7.4/Inca.exe",
+      "family": "inca",
+      "id": "inca:7:x64:default",
+      "integrationAdapters": [
+        "vxl-process-route",
+        "native"
+      ],
+      "source": "Windows App Paths",
+      "version": "7.4.7"
+    },
+    {
+      "architecture": "x86",
+      "available": true,
+      "compatibility": "Capability inspection required",
+      "compatibilityKind": "info",
+      "displayName": "XL Driver Library Demo",
+      "executablePath": "D:/CAN-Demos/XLdemo.exe",
+      "family": "custom-vxl",
+      "id": "vxl-demo:manual:x86",
+      "integrationAdapters": [
+        "vxl-process-route",
+        "developer-deployment"
+      ],
+      "source": "Manual",
+      "version": "1.0.0"
+    }
+  ],
+  "primary_application_id": "canoe-lab"
+}

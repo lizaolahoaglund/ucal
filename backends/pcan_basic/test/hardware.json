@@ -1,0 +1,11 @@
+{
+  "runtime_environment": "UCAL_PCAN_BASIC_RUNTIME",
+  "requires_termination": false,
+  "supports_termination": false,
+  "requires_tx_completion": false,
+  "timing_readback": "exact-public-runtime-readback",
+  "supports_tx_completion": false,
+  "submission_correlated": false,
+  "filter_rejection_requires_self_receive": false,
+  "echo_environment": "UCAL_PCAN_ALLOW_ECHO_FRAMES"
+}

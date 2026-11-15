@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{80F2B067-7FB7-4A17-8C76-E6BD70B40501}</ProjectGuid><Keyword>Win32Proj</Keyword><UcalRoot>$(MSBuildThisFileDirectory)</UcalRoot><RootNamespace>Ucal</RootNamespace><ProjectName>Ucal</ProjectName></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration"><ConfigurationType>StaticLibrary</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration"><ConfigurationType>StaticLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><WholeProgramOptimization>true</WholeProgramOptimization></PropertyGroup>
+  <Import Project="$(UcalRoot)plugin.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ItemDefinitionGroup><ClCompile><AdditionalIncludeDirectories>$(UcalRoot)include;$(UcalRoot)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories></ClCompile><Lib><TargetMachine Condition="'$(Platform)'=='Win32'">MachineX86</TargetMachine><TargetMachine Condition="'$(Platform)'=='x64'">MachineX64</TargetMachine></Lib></ItemDefinitionGroup>
+  <ItemGroup><ClInclude Include="$(UcalRoot)include\ucal\Model.hpp" /><ClInclude Include="$(UcalRoot)include\ucal\CanTiming.hpp" /><ClInclude Include="$(UcalRoot)include\ucal\Protocol.hpp" /><ClInclude Include="$(UcalRoot)include\ucal\Client.hpp" /></ItemGroup>
+  <ItemGroup><ClCompile Include="src\core\Model.cpp" /><ClCompile Include="src\plugins\BackendDispatch.cpp" /><ClCompile Include="src\core\Protocol.cpp" /><ClCompile Include="src\ipc\Client.cpp" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

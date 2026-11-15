@@ -1,0 +1,159 @@
+{
+  "schema": "org.ucal.api-frontend-cases/1",
+  "caseCount": 16,
+  "hardwareAccess": false,
+  "cases": [
+    {
+      "id": "vxlapi-x64-pcan",
+      "kind": "route",
+      "api": "vxlapi",
+      "architecture": "x64",
+      "backend": "pcan",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "vxlapi-x64-vector",
+      "kind": "route",
+      "api": "vxlapi",
+      "architecture": "x64",
+      "backend": "vector",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "vxlapi-x64-j2534",
+      "kind": "route",
+      "api": "vxlapi",
+      "architecture": "x64",
+      "backend": "j2534",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "vxlapi-x64-deployment-restore",
+      "kind": "deployment",
+      "api": "vxlapi",
+      "architecture": "x64",
+      "expectedExecutableUnchanged": true,
+      "expectedExactRestore": true
+    },
+    {
+      "id": "vxlapi-x86-pcan",
+      "kind": "route",
+      "api": "vxlapi",
+      "architecture": "x86",
+      "backend": "pcan",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "vxlapi-x86-vector",
+      "kind": "route",
+      "api": "vxlapi",
+      "architecture": "x86",
+      "backend": "vector",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "vxlapi-x86-j2534",
+      "kind": "route",
+      "api": "vxlapi",
+      "architecture": "x86",
+      "backend": "j2534",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "vxlapi-x86-deployment-restore",
+      "kind": "deployment",
+      "api": "vxlapi",
+      "architecture": "x86",
+      "expectedExecutableUnchanged": true,
+      "expectedExactRestore": true
+    },
+    {
+      "id": "pcan_basic-x64-pcan",
+      "kind": "route",
+      "api": "pcan_basic",
+      "architecture": "x64",
+      "backend": "pcan",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "pcan_basic-x64-vector",
+      "kind": "route",
+      "api": "pcan_basic",
+      "architecture": "x64",
+      "backend": "vector",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "pcan_basic-x64-j2534",
+      "kind": "route",
+      "api": "pcan_basic",
+      "architecture": "x64",
+      "backend": "j2534",
+      "expectedClassic": true,
+      "expectedCanFd": false,
+      "expectedFdSamplingRejection": true
+    },
+    {
+      "id": "pcan_basic-x64-deployment-restore",
+      "kind": "deployment",
+      "api": "pcan_basic",
+      "architecture": "x64",
+      "expectedExecutableUnchanged": true,
+      "expectedExactRestore": true
+    },
+    {
+      "id": "pcan_basic-x86-pcan",
+      "kind": "route",
+      "api": "pcan_basic",
+      "architecture": "x86",
+      "backend": "pcan",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "pcan_basic-x86-vector",
+      "kind": "route",
+      "api": "pcan_basic",
+      "architecture": "x86",
+      "backend": "vector",
+      "expectedClassic": true,
+      "expectedCanFd": true,
+      "expectedFdSamplingRejection": false
+    },
+    {
+      "id": "pcan_basic-x86-j2534",
+      "kind": "route",
+      "api": "pcan_basic",
+      "architecture": "x86",
+      "backend": "j2534",
+      "expectedClassic": true,
+      "expectedCanFd": false,
+      "expectedFdSamplingRejection": true
+    },
+    {
+      "id": "pcan_basic-x86-deployment-restore",
+      "kind": "deployment",
+      "api": "pcan_basic",
+      "architecture": "x86",
+      "expectedExecutableUnchanged": true,
+      "expectedExactRestore": true
+    }
+  ]
+}

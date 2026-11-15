@@ -1,0 +1,100 @@
+/* Finite bidirectional Classic CAN traffic for installed CANoe acceptance. */
+variables
+{
+  message 0x5A5 ucalTx;
+  msTimer sendTimer;
+  long ucalRxCount;
+  long ucalRxIntegrityErrors;
+  long ucalRxOrderErrors;
+  long ucalRxNextSequence;
+  long sequence;
+  long payloadIndex;
+}
+
+on start
+{
+  /* CANoe 12's legacy compiled-node context maps the first Real Bus slot here. */
+  ucalTx.can = 1;
+  ucalTx.FDF = 0;
+  ucalTx.BRS = 0;
+  ucalTx.dlc = 8;
+  sequence = 0;
+  ucalRxCount = 0;
+  ucalRxIntegrityErrors = 0;
+  ucalRxOrderErrors = 0;
+  ucalRxNextSequence = 0;
+  /* Let CANoe finish activating all configured hardware channels first. */
+  setTimer(sendTimer, 2000);
+}
+
+on timer sendTimer
+{
+  ucalTx.byte(0) = sequence & 0xFF;
+  ucalTx.byte(1) = (sequence >> 8) & 0xFF;
+  ucalTx.byte(2) = (sequence >> 16) & 0xFF;
+  ucalTx.byte(3) = (sequence >> 24) & 0xFF;
+  for (payloadIndex = 4; payloadIndex < 8; payloadIndex++)
+  {
+    ucalTx.byte(payloadIndex) = 0x80 + ((sequence + payloadIndex) & 0x3F);
+  }
+  output(ucalTx);
+  sequence++;
+  if (sequence < 16)
+  {
+    setTimer(sendTimer, 5);
+  }
+}
+
+on message 0x5A6
+{
+  long sequence;
+  long index;
+  long expected;
+
+  if (this.can != 1)
+  {
+    return;
+  }
+
+  if (this.dlc != 8 || this.FDF || this.BRS)
+  {
+    ucalRxIntegrityErrors++;
+    return;
+  }
+
+  sequence = this.byte(0) |
+             (this.byte(1) << 8) |
+             (this.byte(2) << 16) |
+             (this.byte(3) << 24);
+  if (sequence != ucalRxNextSequence)
+  {
+    ucalRxOrderErrors++;
+  }
+  ucalRxNextSequence = sequence + 1;
+
+  for (index = 4; index < 8; index++)
+  {
+    expected = 0x80 + ((sequence + index) & 0x3F);
+    if (this.byte(index) != expected)
+    {
+      ucalRxIntegrityErrors++;
+    }
+  }
+  ucalRxCount++;
+}
+
+on stopMeasurement
+{
+  dword handle;
+  char result[256];
+
+  handle = openFileWrite("UcalLifecycle.result", 0);
+  if (handle != 0)
+  {
+    snprintf(result, elcount(result), "%d,%d,%d,%d\n",
+             ucalRxCount, ucalRxIntegrityErrors,
+             ucalRxOrderErrors, ucalRxNextSequence);
+    filePutString(result, elcount(result), handle);
+    fileClose(handle);
+  }
+}

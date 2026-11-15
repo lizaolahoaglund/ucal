@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{C1511334-0404-4000-A000-000000000001}</ProjectGuid><Keyword>Win32Proj</Keyword><RootNamespace>UcalJ2534TestRuntime</RootNamespace><ProjectName>UcalJ2534TestRuntime</ProjectName></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><WholeProgramOptimization>true</WholeProgramOptimization></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'"><Link><ModuleDefinitionFile>ExportsX86.def</ModuleDefinitionFile></Link></ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x64'"><Link><ModuleDefinitionFile>ExportsX64.def</ModuleDefinitionFile></Link></ItemDefinitionGroup>
+  <PropertyGroup><TargetName>UcalJ2534TestRuntime</TargetName></PropertyGroup>
+  <PropertyGroup Condition="'$(UcalJ2534StandardOnly)'=='true'">
+    <TargetName>UcalJ2534StandardRuntime</TargetName>
+    <IntDir>$(SolutionDir)out\build\j2534-standard\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(UcalJ2534StandardOnly)'=='true'">
+    <Link><ModuleDefinitionFile>ExportsStandard$(Platform).def</ModuleDefinitionFile></Link>
+  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(UcalJ2534DiscoveryV1Only)'=='true'">
+    <TargetName>UcalJ2534V1Runtime</TargetName><IntDir>$(SolutionDir)out\build\j2534-v1\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(UcalJ2534DiscoveryV1Only)'=='true'">
+    <Link><ModuleDefinitionFile Condition="'$(Platform)'=='Win32'">ExportsV1X86.def</ModuleDefinitionFile><ModuleDefinitionFile Condition="'$(Platform)'=='x64'">ExportsV1X64.def</ModuleDefinitionFile></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="Runtime.cpp" /></ItemGroup>
+  <ItemGroup><None Include="ExportsX86.def" /><None Include="ExportsX64.def" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

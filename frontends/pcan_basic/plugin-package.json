@@ -1,0 +1,61 @@
+{
+  "schema": "org.ucal.plugin-source-package/2",
+  "id": "pcan-basic",
+  "kind": "api",
+  "visibility": "public",
+  "runtime_files": [
+    {
+      "root": "x64",
+      "source": "PCANBasic.dll",
+      "destination": "frontends/pcan_basic/x64/PCANBasic.dll"
+    },
+    {
+      "root": "x86",
+      "source": "PCANBasic.dll",
+      "destination": "frontends/pcan_basic/x86/PCANBasic.dll"
+    }
+  ],
+  "source_files": [
+    {
+      "source": "tools/Set-UcalPcanBasicClientDeployment.ps1",
+      "destination": "frontends/pcan_basic/tools/Set-UcalPcanBasicClientDeployment.ps1"
+    },
+    {
+      "source": "deployment.json",
+      "destination": "frontends/pcan_basic/tools/deployment.json"
+    },
+    {
+      "source": "../../ucal/tools/UcalApiDeployment.psm1",
+      "destination": "frontends/pcan_basic/tools/UcalApiDeployment.psm1"
+    },
+    {
+      "source": "../../ucal/tools/UcalPeContract.psm1",
+      "destination": "frontends/pcan_basic/tools/UcalPeContract.psm1"
+    },
+    {
+      "source": "tools/Set-UcalPcanBasicClientDeployment.ps1",
+      "destination": "tools/pcan-basic-client/Set-UcalPcanBasicClientDeployment.ps1"
+    },
+    {
+      "source": "deployment.json",
+      "destination": "tools/pcan-basic-client/deployment.json"
+    },
+    {
+      "source": "../../ucal/tools/UcalApiDeployment.psm1",
+      "destination": "tools/pcan-basic-client/UcalApiDeployment.psm1"
+    },
+    {
+      "source": "../../ucal/tools/UcalPeContract.psm1",
+      "destination": "tools/pcan-basic-client/UcalPeContract.psm1"
+    },
+    {
+      "source": "doc/Usage.md",
+      "destination": "frontends/pcan_basic/README.md"
+    }
+  ],
+  "backends": [],
+  "vendor_runtime_names": [
+    "pcanbasic.dll",
+    "pcanapi.dll"
+  ]
+}

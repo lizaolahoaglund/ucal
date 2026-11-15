@@ -1,0 +1,12 @@
+# Compatibility implementation is distributed as an independent binary support package.
+/src/XlRuntime.cpp export-ignore
+/src/canoe/** export-ignore
+/canoe/** export-ignore
+/UcalVectorSupport.vcxproj export-ignore
+/UcalVectorProvider.vcxproj export-ignore
+/UcalVcndrvms*.vcxproj export-ignore
+/src/XlRuntimeX86.def export-ignore
+/src/XlRuntimeX64.def export-ignore
+/src/XlSupportX86.def export-ignore
+/src/XlSupportX64.def export-ignore
+/test/runner/** export-ignore

@@ -1,0 +1,15 @@
+{
+  "schema": "org.ucal.plugin-source-package/2",
+  "id": "pcan_basic",
+  "kind": "backend",
+  "visibility": "public",
+  "runtime_files": [],
+  "source_files": [],
+  "backends": [
+    "backend.json"
+  ],
+  "vendor_runtime_names": [
+    "pcanbasic.dll",
+    "pcanapi.dll"
+  ]
+}

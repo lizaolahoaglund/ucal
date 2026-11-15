@@ -1,0 +1,15 @@
+{
+  "schema": "org.ucal.plugin-source-package/2",
+  "id": "vxlapi",
+  "kind": "backend",
+  "visibility": "public",
+  "runtime_files": [],
+  "source_files": [],
+  "backends": [
+    "backend.json"
+  ],
+  "vendor_runtime_names": [
+    "vxlapi.dll",
+    "vxlapi64.dll"
+  ]
+}

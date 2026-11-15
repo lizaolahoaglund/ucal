@@ -1,0 +1,18 @@
+EXPORTS
+    UcalXlGetDiagnostics
+    xlActivateChannel
+    xlCanFdSetConfiguration
+    xlCloseDriver
+    xlClosePort
+    xlDeactivateChannel
+    xlGetApplConfig
+    xlGetChannelIndex
+    xlGetChannelMask
+    xlGetDriverConfig
+    xlGetDriverConfig2
+    xlGetDriverConfigEx
+    xlGetErrorString
+    xlOpenDriver
+    xlOpenPort
+    xlReceive
+    xlSetApplConfig

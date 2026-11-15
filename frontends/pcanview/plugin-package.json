@@ -1,0 +1,39 @@
+{
+  "schema": "org.ucal.plugin-source-package/2",
+  "id": "pcanview",
+  "kind": "frontend",
+  "visibility": "public",
+  "runtime_files": [
+    {
+      "root": "x64",
+      "source": "UcalPcanViewNativeBridge.exe",
+      "destination": "frontends/pcanview/x64/UcalPcanViewNativeBridge.exe"
+    },
+    {
+      "root": "x64",
+      "source": "UcalPcanViewSupport.dll",
+      "destination": "frontends/pcanview/x64/UcalPcanViewSupport.dll"
+    },
+    {
+      "root": "native",
+      "source": "UcalPcanViewNativeAdapter.dll",
+      "destination": "frontends/pcanview/x64/UcalPcanViewNativeAdapter.dll"
+    }
+  ],
+  "source_files": [],
+  "backends": [],
+  "private_sources": [
+    "src/bridge/**",
+    "res/ucal_pcanview_native_profiles.json",
+    "tools/**",
+    "test/native_hook/**",
+    "test/bridge/**",
+    "doc/bridge/**",
+    "doc/tools/**",
+    "UcalPcanViewNativeAdapter.vcxproj",
+    "UcalPcanViewSupport.vcxproj",
+    "CompiledProfiles.targets"
+  ],
+  "license": "LGPL-3.0-only WITH Independent-modules-exception",
+  "binary_support_license": "licenses/CompatibilitySupport.txt"
+}

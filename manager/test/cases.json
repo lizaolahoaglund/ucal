@@ -1,0 +1,636 @@
+{
+  "schema": "org.ucal.qt-regression-catalog/1",
+  "suite": "ManagerModelTest",
+  "source": "ManagerModelTest.cpp",
+  "caseCount": 105,
+  "counting": "Qt function cases; excludes initTestCase and cleanupTestCase. Platform skips are reported separately.",
+  "cases": [
+    {
+      "id": "userPackageRootDoesNotDependOnDeveloperTools",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required",
+      "coverage": [
+        "Release startup finds its own runtime without developer scripts",
+        "A damaged package never borrows an ancestor checkout runtime"
+      ]
+    },
+    {
+      "id": "nativeBackendSettingsAreUserOwned",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required",
+      "coverage": [
+        "Backend runtime paths live in Manager user settings",
+        "Legacy relative paths migrate without modifying the module",
+        "Existing user settings take priority; empty templates create no file",
+        "Invalid settings targets fail explicitly"
+      ]
+    },
+    {
+      "id": "compatibilityChecksRequiredLaunchAssets",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "canoeDriverRegistrationPreflight",
+      "area": "launch-and-processes",
+      "skipPolicy": "required",
+      "coverage": [
+        "Missing and empty native driver registration produces an actionable read-only failure",
+        "Virtual-only registration does not require a VN1610",
+        "Explicit read failures remain distinct from missing registration",
+        "Every supported UI language includes full paths and the official repair entry point"
+      ]
+    },
+    {
+      "id": "unavailableDeploymentActionsAreHidden",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "coldStartupDoesNotWaitForBroker",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "duplicateEndpointMappingsAreRejectedAtomically",
+      "area": "channel-mapping",
+      "skipPolicy": "required",
+      "coverage": [
+        "Duplicate mapping writes are rejected without partial mutation",
+        "All conflicting slots are returned in logical order, including three-way and independent groups",
+        "Unassigned, inactive and nonconflicting slots are excluded from the summary",
+        "The Chinese warning lists all three conflicting channels"
+      ]
+    },
+    {
+      "id": "duplicateLegacyEditorCanBeCorrected",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required",
+      "coverage": [
+        "Editor and launch preflight show one complete conflict summary",
+        "Partially correcting one group leaves the other conflicts visible and Save disabled",
+        "Correcting every duplicate clears the warning and enables Save",
+        "Cancel leaves the saved workspace unchanged"
+      ]
+    },
+    {
+      "id": "endpointChoicesPreventDuplicateBindings",
+      "area": "channel-mapping",
+      "skipPolicy": "required",
+      "coverage": [
+        "Assigned suffix is visible on disabled choices without naming an owner, with explicit muted text",
+        "Repeated changes do not duplicate the suffix or alter endpoint identity",
+        "Clearing or deleting the owning row restores the original available label",
+        "Imported duplicate selection still blocks Save"
+      ]
+    },
+    {
+      "id": "stagedEditorKeepsCurrentRuntimeState",
+      "area": "hardware-inventory",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "hardwareNotificationsCoalesceAndSettle",
+      "area": "hardware-inventory",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "windowsDeviceChangeReachesQtMonitor",
+      "area": "hardware-inventory",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "hardwareOnlyDiscoverySkipsSoftware",
+      "area": "hardware-inventory",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "launchEnvironmentSurvivesWindowsDriveVariables",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "includeAllCustomProjectCanBeDeleted",
+      "area": "projects",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "unsupportedSoftwareCannotCreateApplication",
+      "area": "software-discovery",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "pluginScanRestoresForgottenStandardInstallation",
+      "area": "plugin-packages",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "portablePathsHonorIsolation",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "softwareRescanRunsWithoutBroker",
+      "area": "software-discovery",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "phaseOneChannelCounts",
+      "area": "channel-mapping",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "missingEndpointKeepsSlot",
+      "area": "channel-mapping",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "reorderedInventoryDoesNotRemap",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "roundTripsJsonAtomically",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "retiredBusPresetIsIgnored",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "corruptPrimaryRecoversFromBackup",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "unsupportedFutureSchemaDoesNotRollback",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "legacySchemaMigrates",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "saveFailsClosedForDirectoryTarget",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "saveFailsClosedWhenBackupCannotBeWritten",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "saveFailsClosedForReadOnlyAndLockedTargets",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "backupContainsExactPreviousGeneration",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "corruptPrimaryAndBackupReportBothFailures",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "pluginDescriptionsAndChannelBindings",
+      "area": "plugin-packages",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "backendPackagesAreReadOnly",
+      "area": "plugin-packages",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "backendEnablementPersistsWithoutChangingMetadata",
+      "area": "plugin-packages",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "hardwareKeywordFilterIsSessionOnly",
+      "area": "hardware-inventory",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "legacyCustomProjectMembershipIsEditable",
+      "area": "projects",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "packageMetadataAndTools",
+      "area": "plugin-packages",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "frontendPackagesAndExternalOperations",
+      "area": "plugin-packages",
+      "skipPolicy": "required",
+      "coverage": [
+        "V2 snake_case JSON and V1 fallback",
+        "opaque environment keys and conflicting alias rejection",
+        "plugin-owned error text"
+      ]
+    },
+    {
+      "id": "backendFolderScanIsDeterministicAndFailClosed",
+      "area": "plugin-packages",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "backendRescanPreservesMissingPackagesAndMappings",
+      "area": "plugin-packages",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "explicitChannelEditsStayWithinSoftwareLimits",
+      "area": "channel-mapping",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "launchArgumentsRoundTripWithWindowsQuoting",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "legacyWorkspaceDoesNotRestoreDriverCatalog",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "vxlProductAssetsAndBackupsAreBounded",
+      "area": "persistence",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "projectViewsDoNotOwnApplications",
+      "area": "projects",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "multipleApplicationsCanShareSoftware",
+      "area": "software-discovery",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "assignmentModesStayExplicit",
+      "area": "channel-mapping",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "endpointAssignmentUsesFreeSlotsWithoutOverwrite",
+      "area": "channel-mapping",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "manualSoftwareCreatesAnIndependentInstallation",
+      "area": "software-discovery",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "manualSoftwareCompatibilityUsesExistingRoutes",
+      "area": "software-discovery",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "realisticDemoUsesProductFacingStates",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "productionDefaultsContainNoDemoInventory",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "softwareReconciliationPreservesMissingInstallation",
+      "area": "software-discovery",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "pcanViewVersionProfilesFailClosed",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "translationCatalogSupportsRequiredLanguages",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "presentationModeSupportsNamedArtifacts",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "languagePreferenceRoundTrips",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "userPreferencesRoundTrip",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "startMinimizedPolicyIsBounded",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "profileShortcutTargetsSwitchLauncher",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "profileShortcutLaunchesWithWorkspace",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "profileShortcutRoutesIntoProductInstance",
+      "area": "launch-and-processes",
+      "skipPolicy": "required",
+      "coverage": [
+        "original software icon with UCAL corner badge",
+        "portable ICO cache",
+        "unchanged target/profile/workspace arguments"
+      ]
+    },
+    {
+      "id": "singleInstanceForwardsProfileByWorkspace",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "singleInstanceModalRequestCanRepeat",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "rebuiltChannelTableHasNoVisibleStaleEditors",
+      "area": "channel-mapping",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "legacyChannelRowsRequireExplicitRemoval",
+      "area": "channel-mapping",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "pcanDefaultsRequireAnExplicitEndpoint",
+      "area": "channel-mapping",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "standardButtonsFollowUiLanguage",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "productLauncherUsesDirectAcceptedRoutes",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "canoeLaunchUsesShadowWhenPresent",
+      "coverage": [
+        "Compatibility inspection leaves managed shadow bytes unchanged",
+        "Launch synchronizes packaged x86/x64 compatibility and discovery DLLs with retained backups",
+        "Provider forwarding shells and user configuration stay unchanged",
+        "Busy or missing assets block launch before replacing any DLL; unchanged launches do not create backups",
+        "Complete runtime selection and existing UCAL shadow marker/provider filenames remain compatible"
+      ],
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "pcanViewConcurrentLaunchesUseUniqueSlots",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "launchMessagesUseSelectedLanguage",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "manualSoftwareRemovalHonorsReferences",
+      "area": "software-discovery",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "projectMutationsPreserveSharedApplications",
+      "area": "projects",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "launchPlanUsesRawEndpointIdentity",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "pcanViewLaunchPlanUsesExactEndpoint",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "pcanViewLaunchPlanRejectsUnsupportedAssignments",
+      "area": "launch-and-processes",
+      "skipPolicy": "required",
+      "coverage": [
+        "Full Access resolves exactly one PCAN-View endpoint from multiple compatible channels",
+        "Stale or empty inventory blocks launch",
+        "Explicit assignments exceeding the one-channel limit remain blocked"
+      ]
+    },
+    {
+      "id": "launchPlanRejectsNonUuidIdentity",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "canoeLaunchPlanDoesNotRequireSerial",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "launchPlanFailsClosedOnStaleInventory",
+      "area": "launch-and-processes",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "fullAccessLaunchUsesStableCatalogOrder",
+      "area": "launch-and-processes",
+      "skipPolicy": "required",
+      "coverage": [
+        "Stable compatible catalog is truncated to CANoe 16 and PCAN-View 1 even with 40 online endpoints",
+        "Enumeration reordering does not change automatic selection",
+        "Automatic assignment preserves saved explicit bindings"
+      ]
+    },
+    {
+      "id": "reviewNavigationAndSoftwareUsage",
+      "area": "software-discovery",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "mainWindowNavigatesEveryPage",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "languageChangePreservesWindowAndProcesses",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "startAllDispatchesEveryProjectProfile",
+      "area": "projects",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "productStateLabelsRemainTruthful",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required",
+      "coverage": "Full UCAL Manager brand and single-line version footer fit all four UI languages without shortening names; truthful product status labels."
+    },
+    {
+      "id": "reviewDialogsExposeEveryWorkflowSurface",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "keyboardControlsAreAccessibleAndOperable",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "applicationWorkflowMutatesThroughWidgets",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "projectWorkflowMutatesThroughWidgets",
+      "area": "projects",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "hardwareUsageIsReadOnly",
+      "area": "hardware-inventory",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "runtimeInventoryIsNotRestoredAsOnline",
+      "area": "hardware-inventory",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "bridgeStopKeepsFailureVisible",
+      "area": "launch-and-processes",
+      "skipPolicy": "required",
+      "coverage": [
+        "Manager Stop sends the bridge shutdown command",
+        "Exit 17 retains the application failure and diagnostic log",
+        "Normal bridge shutdown does not leave a failure indication"
+      ]
+    },
+    {
+      "id": "processWatchdogBoundsHungHelper",
+      "area": "launch-and-processes",
+      "skipPolicy": "required",
+      "coverage": [
+        "A controlled test subprocess hangs until the watchdog stops it",
+        "A controlled nonzero exit is not misclassified as a timeout",
+        "Probe startup does not depend on PowerShell or shell profiles",
+        "Configured helper timeout values stay within supported bounds"
+      ]
+    },
+    {
+      "id": "settingsControlsPersistThroughWidgets",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "askClosePolicyHonorsBothChoices",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "trayCloseHidesAndOpenRestores",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "no-system-tray"
+    },
+    {
+      "id": "closeWithoutTrayExitsNormally",
+      "area": "settings-and-lifecycle",
+      "skipPolicy": "required"
+    },
+    {
+      "id": "pcanFullAccessEditorPersistsMode",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required",
+      "coverage": [
+        "Full Access is enabled for the one-channel PCAN-View profile",
+        "Save and reopen preserve Full Access mode",
+        "Switching back to Selected retains the original endpoint reference; offline references are not automatic candidates"
+      ]
+    },
+    {
+      "id": "startupWindowFitsAvailableDesktop",
+      "area": "widgets-and-presentation",
+      "skipPolicy": "required",
+      "coverage": [
+        "Native frame fits the available desktop at the selected DPI",
+        "Settings remain reachable through scrolling on small logical desktops"
+      ]
+    },
+    {
+      "id": "pluginMetadataPreservesOpaqueIntegrationIds",
+      "area": "plugin-contracts",
+      "skipPolicy": "required",
+      "coverage": [
+        "Opaque integration IDs and environment keys round-trip unchanged",
+        "Conflicting schema field aliases remain rejected"
+      ]
+    },
+    {
+      "id": "frontendLaunchResourceSlotsFollowContract",
+      "area": "plugin-contracts",
+      "skipPolicy": "required",
+      "coverage": [
+        "V2 resource_slot and legacy alias participate in resource reservation",
+        "Invalid values and conflicting aliases fail instead of silently using slot zero"
+      ]
+    },
+    {
+      "id": "canoeForwardersPreserveLoadingContract",
+      "area": "launch-and-processes",
+      "skipPolicy": "required",
+      "coverage": [
+        "Windows resolves original synthetic forwarders by name and ordinal",
+        "Override and opaque/native exports preserve the loading boundary",
+        "Malformed PE, ordinal overflow and architecture mismatches are rejected"
+      ]
+    },
+    {
+      "id": "canoeFirstLaunchCreatesOwnedCopy",
+      "area": "launch-and-processes",
+      "skipPolicy": "required",
+      "coverage": [
+        "Read-only preflight does not create user files",
+        "First preparation copies only local synthetic installed files and original package assets",
+        "Cancellation and missing prerequisites leave previous copies intact",
+        "Repeated preparation preserves user settings; incomplete copies remain recoverable",
+        "CANoe 11 and 12 share compact path selection and inherit vcustom.ini from the matching long-path copy"
+      ]
+    }
+  ]
+}
