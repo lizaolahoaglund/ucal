@@ -31,7 +31,7 @@ extern "C" uint32_t __stdcall CAN_GetValue(uint16_t handle, uint8_t parameter, v
             c = {};
             c.handle = static_cast<uint16_t>(0x51 + i);
             c.deviceType = 5;
-            c.controllerNumber = static_cast<uint8_t>(i);
+            c.controllerNumber = mode() == "duplicate-identity" ? 0 : static_cast<uint8_t>(i);
             c.features = 1;
             strcpy_s(c.deviceName, "Original PCAN fixture");
             c.condition = 1;

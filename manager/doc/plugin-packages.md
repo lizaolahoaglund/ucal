@@ -21,6 +21,10 @@ Manager locates the shared J2534 adapter and matching-bitness worker. These comp
 
 Schema 5 descriptors contain static metadata and reject a `channels` list. Native UCAL DLLs enumerate their endpoints directly. A J2534 package can declare a `discovery_library` that returns live channels and opaque selectors. The shared adapter holds this inventory in memory and uses the vendor's PassThru calls for traffic. Without a discovery module, the driver default is the sole logical entry and the vendor's configuration selects the port. J2534 04.04 alone cannot enumerate the physical ports. Manager still reads explicit bindings from schema 2 and 3 packages and preserves saved application mappings when their endpoints disappear.
 
+J2534 packages can set `config_list_layout` to `native` when the 04.04 DLL uses native pointer alignment. The default is `packed`. This field describes the DLL's configuration structure, independently of CAN timing.
+
+The optional `manager_version` string records the UCAL Manager release the descriptor targets. It is informational. Manager accepts descriptors without it and does not compare it against the running version. The J2534 package generator reads the version from `UcalManagerPackage.json` when generating a descriptor for a versioned portable package.
+
 See the [backend plugin contract](../../ucal/doc/backend-plugins.md) for fields, admission requirements and the native ABI.
 
 ## Vendor configuration tools

@@ -740,7 +740,7 @@ QWidget* MainWindow::createSidebar() {
     auto* versionIcon = new QLabel(version);
     versionIcon->setPixmap(navigationIcon(0).pixmap(20, 20));
     versionLayout->addWidget(versionIcon);
-    auto* versionLabel = mutedText(QStringLiteral("UCAL Manager 0.9.0"), version);
+    auto* versionLabel = mutedText(QStringLiteral("UCAL Manager 0.9.1"), version);
     versionLabel->setObjectName(QStringLiteral("sidebarVersionLabel"));
     versionLabel->setWordWrap(false);
     auto versionFont = versionLabel->font();
@@ -1877,7 +1877,7 @@ QWidget* MainWindow::createSettingsPage() {
     auto* text = new QWidget(about);
     auto* textLayout = new QVBoxLayout(text);
     textLayout->setContentsMargins(0, 0, 0, 0);
-    auto* title = new QLabel(usesProductCopy() ? QStringLiteral("UCAL Manager 0.9.0")
+    auto* title = new QLabel(usesProductCopy() ? QStringLiteral("UCAL Manager 0.9.1")
                                             : QStringLiteral("UCAL Manager 0.2.0-poc"), text);
     title->setObjectName(QStringLiteral("cardTitle"));
     textLayout->addWidget(title);

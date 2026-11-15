@@ -74,7 +74,7 @@ try{
     $redists=@(Get-ChildItem -LiteralPath (Join-Path $visualStudio 'VC/Redist/MSVC') -Directory | Where-Object {$_.Name -match '^\d+\.'} | Sort-Object {[version]$_.Name} -Descending)
     if(-not $redists.Count){throw 'Microsoft C++ redistributable build inputs were not found.'}
     & (Join-Path $PSScriptRoot 'packaging/Copy-UcalCrtDependencies.ps1') -PackageRoot $dist -RedistRoot $redists[0].FullName
-    & (Join-Path $PSScriptRoot 'packaging/New-UcalManagerPackageManifest.ps1') -PackageRoot $dist -Version '0.9.0'
+    & (Join-Path $PSScriptRoot 'packaging/New-UcalManagerPackageManifest.ps1') -PackageRoot $dist -Version '0.9.1'
     Write-Host "Complete portable product: $dist"
 }finally{
     Get-ChildItem Env: | Where-Object {-not $saved.ContainsKey($_.Name)} | ForEach-Object {[Environment]::SetEnvironmentVariable($_.Name,$null,'Process')}

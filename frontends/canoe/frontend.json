@@ -2,7 +2,7 @@
   "schema": "org.ucal.frontend-package/2",
   "id": "canoe",
   "name": "Vector CANoe",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "implementation": "dll",
   "operations": [
     "scan",

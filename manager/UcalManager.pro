@@ -5,6 +5,7 @@ CONFIG -= app_bundle
 msvc:QMAKE_CXXFLAGS += /utf-8
 TEMPLATE = app
 TARGET = UcalManager
+VERSION = 0.9.1
 
 INCLUDEPATH += ../ucal/include
 

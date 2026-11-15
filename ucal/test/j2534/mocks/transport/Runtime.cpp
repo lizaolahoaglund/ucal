@@ -108,10 +108,13 @@ Result __stdcall PassThruIoctl(U32 channel, U32 operation, void *input, void *) 
         return Multi::ioctl(channel, operation, input);
     if (!correctThread() || channel != channelId() || !connected || !input)
         return 2;
-    auto *list = static_cast<ConfigList *>(input);
-    if (list->count != 1u || !list->items || !config.count(list->items->parameter))
+    const auto params = [](const auto* list) { return std::make_pair(list->count, list->items); };
+    const auto [count, items] = scenario() == "native-config-list"
+        ? params(static_cast<const NativeConfigList *>(input))
+        : params(static_cast<const ConfigList *>(input));
+    if (count != 1u || !items || !config.count(items->parameter))
         return 5;
-    auto &c = *list->items;
+    auto &c = *items;
     if (operation == getConfig && scenario() == "standard-set-only") return 1;
     if (operation == getConfig && scenario() == "standard-get-busy") return timeout;
     if (c.parameter == pins && scenario() == "standard-default-pins") return 1;

@@ -174,11 +174,11 @@ bool parseBackendPlugin(const QJsonObject &input, const QString &path, BackendPa
     };
     const QSet<QString> keys{QStringLiteral("schema"),        QStringLiteral("id"),
                              QStringLiteral("name"), QStringLiteral("description"), QStringLiteral("vendor"),
-                             QStringLiteral("version"),       QStringLiteral("mode"),
+                             QStringLiteral("version"),       QStringLiteral("managerVersion"), QStringLiteral("mode"),
                              QStringLiteral("library"),       QStringLiteral("backendFamily"),
                              QStringLiteral("configuration"), QStringLiteral("capabilities"),
                              QStringLiteral("channels"),      QStringLiteral("fixedTiming"),
-                             QStringLiteral("pins"), QStringLiteral("type"), QStringLiteral("configurationTool"), QStringLiteral("preserveEndpointIdentity"), QStringLiteral("discoveryLibrary"), QStringLiteral("brokerAliases"), QStringLiteral("isolated"), QStringLiteral("endpointPresentation"), QStringLiteral("launch")};
+                             QStringLiteral("pins"), QStringLiteral("type"), QStringLiteral("configurationTool"), QStringLiteral("preserveEndpointIdentity"), QStringLiteral("discoveryLibrary"), QStringLiteral("configListLayout"), QStringLiteral("brokerAliases"), QStringLiteral("isolated"), QStringLiteral("endpointPresentation"), QStringLiteral("launch")};
     if (o.contains("launch") && !o.value("launch").isObject()) return fail();
     if (o.contains("brokerAliases") && !o.value("brokerAliases").isArray()) return fail();
     for (const auto& value : o.value("brokerAliases").toArray())
@@ -220,6 +220,11 @@ bool parseBackendPlugin(const QJsonObject &input, const QString &path, BackendPa
     p.description = o.value(QStringLiteral("description"));
     p.vendor = o.value(QStringLiteral("vendor")).toString();
     p.version = o.value(QStringLiteral("version")).toString();
+    if (o.contains("managerVersion")) {
+        p.managerVersion = o.value("managerVersion").toString();
+        static const QRegularExpression versionPattern(QStringLiteral("\\A[0-9A-Za-z][0-9A-Za-z.+_-]{0,63}\\z"));
+        if (!v5 || !versionPattern.match(p.managerVersion).hasMatch()) return fail();
+    }
     p.mode = o.value(QStringLiteral("mode")).toString();
     p.type = v3 ? o.value(QStringLiteral("type")).toString() :
         (p.mode == QStringLiteral("j2534") ? QStringLiteral("j2534-0404-gmw17753") : p.mode);
@@ -235,6 +240,12 @@ bool parseBackendPlugin(const QJsonObject &input, const QString &path, BackendPa
         const auto discovery = o.value("discoveryLibrary").toString();
         if (!scalar(discovery, 1023)) return fail();
         p.discoveryLibraryPath = resolved(discovery, path);
+    }
+    if (o.contains("configListLayout")) {
+        if (!v5 || p.mode != QStringLiteral("j2534")) return fail();
+        p.configListLayout = o.value("configListLayout").toString();
+        if (p.configListLayout != QStringLiteral("packed") && p.configListLayout != QStringLiteral("native"))
+            return fail();
     }
     if (o.contains("preserveEndpointIdentity") && !o.value("preserveEndpointIdentity").isBool()) return fail();
     p.preserveEndpointIdentity = o.value("preserveEndpointIdentity").toBool();
@@ -429,6 +440,8 @@ bool saveBackendPluginChannels(const BackendPackage &p, const QVector<BackendCha
             .arg(p.pins);
     if (!p.discoveryLibraryPath.isEmpty())
         text += QStringLiteral("discovery_library=%1\n").arg(QDir::toNativeSeparators(p.discoveryLibraryPath));
+    if (!p.configListLayout.isEmpty())
+        text += QStringLiteral("config_list_layout=%1\n").arg(p.configListLayout);
     const QMap<QString, QString> keys{
         {QStringLiteral("nominalBitrate"), QStringLiteral("fixed_fd_nominal_bitrate")},
         {QStringLiteral("dataBitrate"), QStringLiteral("fixed_fd_data_bitrate")},

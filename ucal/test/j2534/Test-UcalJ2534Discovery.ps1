@@ -1,18 +1,29 @@
 [CmdletBinding()]
-param([ValidateSet('x64','Win32')][string[]]$Architecture=@('x64','Win32'),[string]$EvidenceDirectory)
+param(
+    [ValidateSet('x64','Win32')][string[]]$Architecture = @('x64','Win32'),
+    [string]$EvidenceDirectory,
+    [string[]]$ProviderId
+)
 $ErrorActionPreference='Stop'
 $root=(Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 if(-not $EvidenceDirectory){$EvidenceDirectory=Join-Path $root 'out\j2534-public-discovery'}
 New-Item -ItemType Directory -Force -Path $EvidenceDirectory | Out-Null
 $evidence=(Resolve-Path $EvidenceDirectory).Path
 $savedConfig=$env:UCAL_J2534_CONFIG; $savedMode=$env:UCAL_DISCOVERY_TEST_MODE
+$providers = @(Get-ChildItem -LiteralPath (Join-Path $root 'backends') -Filter discovery.json -Recurse -File |
+    Where-Object { $_.Directory.Name -eq 'test' } |
+    ForEach-Object { Get-Content -LiteralPath $_.FullName -Raw -Encoding UTF8 | ConvertFrom-Json })
+if ($ProviderId) {
+    $unknown = @($ProviderId | Where-Object { $_ -notin $providers.id })
+    if ($unknown) { throw "Unknown discovery test provider: $($unknown -join ', ')" }
+    $providers = @($providers | Where-Object { $_.id -in $ProviderId })
+}
+if (-not $providers) { throw 'No J2534 discovery tests were found.' }
 $results=@()
 try {
     foreach($arch in $Architecture){
         $bin=Join-Path $root "out\$arch\Release"
-        $descriptions = @(Get-ChildItem -LiteralPath (Join-Path $root 'backends') -Filter discovery.json -Recurse -File | Where-Object { $_.Directory.Name -eq 'test' })
-        foreach($description in $descriptions){
-            $provider = Get-Content -LiteralPath $description.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
+        foreach($provider in $providers){
             $family = [string]$provider.id
             $directory=Join-Path $evidence "$arch-$family"
             New-Item -ItemType Directory -Force -Path $directory | Out-Null

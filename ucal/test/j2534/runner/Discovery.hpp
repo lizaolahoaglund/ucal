@@ -25,8 +25,10 @@ void runPublicDiscovery(const std::string &scenario) {
     if (scenario.find("oversized") != std::string::npos)
         require(status == static_cast<int32_t>(Status::TransportError),
                 "unbounded native inventory accepted");
-    else if (scenario.find("no-identity") != std::string::npos)
-        require(status == static_cast<int32_t>(Status::Unsupported), "unidentified port became stable");
+    else if (scenario.find("no-identity") != std::string::npos ||
+             scenario.find("duplicate-identity") != std::string::npos)
+        require(status == static_cast<int32_t>(Status::Unsupported) && count == 0u,
+                "unidentifiable or ambiguous port became assignable");
     else {
         const bool shared = scenario.find("shared") != std::string::npos;
         require(status == 0 && count == (shared ? 1u : 2u), "public inventory count/FD filter");

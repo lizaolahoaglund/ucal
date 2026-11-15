@@ -44,7 +44,7 @@ termination=1
         $env:UCAL_J2534_CONFIG = $config
         $env:UCAL_J2534_WORKER_PATH = $worker
         $baseConfig = Get-Content -LiteralPath $config -Raw
-        $cases = @('normal','zero-handles','wrong-api','sae-only','classic-only','isotp-only',
+        $cases = @('normal','native-config-list','zero-handles','wrong-api','sae-only','classic-only','isotp-only',
             'wrong-readback','no-data-rate','filter-failure','busy','partial',
             'oversized-count','malformed-rx','sae-flags','echo','error-indication',
             'esi','wrap','overflow-rx','overflow-full','backward-clock',
@@ -55,6 +55,9 @@ termination=1
             'multi-rollback','multi-filter-rollback','multi-route-change','multi-malformed','multi-duplicate-route')
         foreach ($case in $cases) {
             $caseConfig = $baseConfig
+            if ($case -eq 'native-config-list') {
+                $caseConfig = $caseConfig.Replace('pins=1550', ('pins=1550' + [Environment]::NewLine + 'config_list_layout=native'))
+            }
             if ($case -eq 'dynamic' -or $case -like 'multi-*') { $caseConfig = $caseConfig.Replace('endpoint_count=1', "endpoint_count=0`ndiscovery_library=$runtime") }
             if ($case -like 'timing-*' -or $case -like 'ports*') {
                 $caseConfig = $caseConfig.Replace('pins=1550', "pins=1550`ntiming_query=UcalFixtureGetCanTiming")

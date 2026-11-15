@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 
 // Original minimal declarations of the public Windows J2534 04.04 C ABI and
@@ -39,6 +40,12 @@ struct ConfigList {
     Config *items;
 };
 #pragma pack(pop)
+// Some 04.04 x64 drivers use the platform layout for the pointer list.
+struct NativeConfigList {
+    U32 count;
+    Config *items;
+};
+static_assert(offsetof(NativeConfigList, items) == sizeof(void *), "native configuration pointer offset");
 static_assert(sizeof(Message) == 4152, "04.04 message ABI");
 static_assert(sizeof(Config) == 8, "04.04 config ABI");
 static_assert(sizeof(ConfigList) == 4 + sizeof(void *), "04.04 packed pointer list ABI");

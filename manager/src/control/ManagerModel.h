@@ -153,6 +153,8 @@ struct BackendPackage {
     bool packageOwnsChannels = false;
     bool runtimeDiscovery = false;
     QString discoveryLibraryPath;
+    QString configListLayout;
+    QString managerVersion;
     PackageTool configurationTool;
     QString libraryPath;
     QString configurationPath;

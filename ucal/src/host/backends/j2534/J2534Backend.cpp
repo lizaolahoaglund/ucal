@@ -210,6 +210,7 @@ struct Backend::Implementation {
     U32 fixedFdNominalBitrate{}, fixedFdDataBitrate{};
     std::string fixedTimingVersion;
     std::string fixedTimingHash;
+    bool nativeConfigList{};
     bool dynamicDiscovery{};
     bool loaded{};
     std::string loadedConfiguration;
@@ -275,10 +276,15 @@ struct Backend::Implementation {
         }
         if (!number(setting(path, L"provider", L"pins"), pinAssignment) || pinAssignment > 0xffffu) return Status::InvalidArgument;
         const auto discoveryLibrary = setting(path, L"provider", L"discovery_library");
+        const auto configListLayout = setting(path, L"provider", L"config_list_layout");
+        if (!configListLayout.empty() && configListLayout != L"packed" && configListLayout != L"native")
+            return Status::InvalidArgument;
+        const bool useNativeConfigList = configListLayout == L"native";
         const auto configuration = utf8(runtime) + "|" + provider + "|" + utf8(timingQuery) + "|" + utf8(discoveryQuery) + "|" +
             fixedTimingVersion + "|" + fixedTimingHash + "|" + std::to_string(fixedFdNominalSample) +
             "|" + std::to_string(fixedFdDataSample) + "|" + std::to_string(fixedFdNominalBitrate) +
-            "|" + std::to_string(fixedFdDataBitrate) + "|" + std::to_string(pinAssignment) + "|" + utf8(discoveryLibrary);
+            "|" + std::to_string(fixedFdDataBitrate) + "|" + std::to_string(pinAssignment) + "|" + utf8(discoveryLibrary) +
+            "|" + (useNativeConfigList ? "native" : "packed");
         if (loaded && configuration != loadedConfiguration) {
             if (!sessions.empty())
                 return Status::Busy;
@@ -290,6 +296,7 @@ struct Backend::Implementation {
             releaseDiscovery();
         }
         if (!discoveryLibrary.empty() && loaded && !refresh && configuration == loadedConfiguration) return Status::Ok;
+        nativeConfigList = useNativeConfigList;
         std::vector<UcalJ2534PortV1> discovered;
         std::vector<UcalJ2534PortV2> routes;
         U32 count = 0u;
@@ -547,13 +554,20 @@ struct Backend::Implementation {
         if (parameter == Abi::gmTermination || parameter == Abi::hsTermination) return CanConfigTermination;
         return 0u;
     }
+    std::pair<Abi::Result, bool> configIoctl(U32 channel, U32 operation, Abi::Config& config) const {
+        const auto call = [&](auto list) {
+            const auto result = ioctl(channel, operation, &list, nullptr);
+            return std::make_pair(result, list.count == 1u && list.items == &config);
+        };
+        return nativeConfigList ? call(Abi::NativeConfigList{1u, &config})
+                                : call(Abi::ConfigList{1u, &config});
+    }
     Status configure(Session& session, const U32 parameter, const U32 value,
                      const bool optionalDefault = false) {
         auto& knowledge = access(session);
         const auto flag = parameterFlag(parameter);
         Abi::Config config{parameter, value};
-        Abi::ConfigList list{1u, &config};
-        const auto result = ioctl(session.channel, Abi::setConfig, &list, nullptr);
+        const auto result = configIoctl(session.channel, Abi::setConfig, config).first;
         if (result != Abi::ok) {
             // Invalid values and transient failures do not permanently disable
             // a setter. Unsupported describes this protocol/configuration only.
@@ -562,10 +576,9 @@ struct Backend::Implementation {
                 knowledge.writeSupported &= ~flag;
                 // A refused setter may still have a readable parameter.
                 Abi::Config query{parameter, 0u};
-                Abi::ConfigList queryList{1u, &query};
-                const auto readResult = ioctl(session.channel, Abi::getConfig, &queryList, nullptr);
+                const auto [readResult, validList] = configIoctl(session.channel, Abi::getConfig, query);
                 if (readResult == Abi::ok) {
-                    if (queryList.count != 1u || queryList.items != &query || query.parameter != parameter)
+                    if (!validList || query.parameter != parameter)
                         return Status::TransportError;
                     knowledge.readKnown |= flag;
                     knowledge.readSupported |= flag;
@@ -589,10 +602,9 @@ struct Backend::Implementation {
         // GET is optional. A driver that accepts SET must remain usable when it
         // cannot read the parameter. No requested value is advertised as readback.
         config = {parameter, ~value};
-        list = {1u, &config};
-        const auto queried = ioctl(session.channel, Abi::getConfig, &list, nullptr);
+        const auto [queried, validList] = configIoctl(session.channel, Abi::getConfig, config);
         if (queried == Abi::ok) {
-            if (list.count != 1u || list.items != &config || config.parameter != parameter)
+            if (!validList || config.parameter != parameter)
                 return Status::TransportError;
             knowledge.readKnown |= flag;
             knowledge.readSupported |= flag;

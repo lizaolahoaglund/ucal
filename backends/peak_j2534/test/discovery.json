@@ -10,6 +10,7 @@
   "modes": [
     "normal",
     "oversized",
-    "no-identity"
+    "no-identity",
+    "duplicate-identity"
   ]
 }

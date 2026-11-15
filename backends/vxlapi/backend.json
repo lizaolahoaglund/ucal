@@ -3,7 +3,7 @@
   "id": "vector-xl",
   "name": "Vector XL",
   "vendor": "Vector",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "type": "ucal",
   "library": "x64/UcalBackendVectorXl.dll",
   "backend_family": "vector-xl",

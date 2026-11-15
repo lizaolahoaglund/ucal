@@ -3,7 +3,7 @@
   "id": "pcan-basic",
   "name": "PEAK PCAN-Basic",
   "vendor": "PEAK",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "type": "ucal",
   "library": "x64/UcalBackendPcanBasic.dll",
   "backend_family": "pcan-basic",

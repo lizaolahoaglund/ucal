@@ -2,7 +2,7 @@
 
 ## Prepare the backend package
 
-1. Install the hardware driver and its J2534 support package.
+1. Install the hardware driver and its J2534 04.04 support package. Use [PCAN-PassThru](https://www.peak-system.com/products/software/development-packages/pcan-passthru-api/) for PEAK or [PassThru XL Library](https://www.vector.com/vector-com/fr/services/download-center/) for Vector. Vector requires an active PassThru XL license and a mapping from CAN 1 in the PassThruXLLibrary application to the chosen physical channel in Vector Hardware Manager.
 2. Put the complete UCAL backend package supplied for that driver in its own folder under `backends/`.
 3. Open Manager and select **Drivers**. Select **Rescan** if you added the package while Manager was running.
 4. Check the driver name and status. For packages that provide a configuration tool, select **Details** and **Open vendor configuration tool**.
@@ -11,6 +11,16 @@
 The package declares its interface type, DLL path, discovery module and dependencies. Manager selects the shared J2534 adapter automatically. See [Plugin packages](plugin-packages.md) for the descriptor format.
 
 A J2534 package can expose several physical channels. PEAK and Vector J2534 packages appear as separate drivers from their native PCAN-Basic and Vector XL backends. The available channels depend on the driver, hardware and discovery module. See the [support matrix](../../doc/support.md) for tested combinations.
+
+To create the description for a portable UCAL build, use the [backend package generator](../../tools/packaging/New-UcalJ2534Backend.ps1) from the source checkout. Supply the installed J2534 04.04 DLL and a packaged UCAL build containing the worker and discovery module for that bitness.
+
+```powershell
+.\tools\packaging\New-UcalJ2534Backend.ps1 -Vendor PEAK -RuntimePath $installedPcanPassThruDll -PackageRoot $portableUcalDirectory
+```
+
+Set the two path variables to your local DLL and portable directory. For Vector, select `-Vendor Vector` and pass the installed `VectorPassThruXL.dll`. Both drivers stay in their installation directories. Rescan Drivers after generating the package description.
+
+PEAK discovery identifies a physical port by device GUID and controller number. If two ports report the same identity, verify the driver and device identities before mapping either port. Vector discovery exposes the default CAN FD route configured in the vendor tool.
 
 ## Find the hardware
 

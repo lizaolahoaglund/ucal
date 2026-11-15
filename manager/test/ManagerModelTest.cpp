@@ -1567,6 +1567,29 @@ void ManagerModelTest::packageMetadataAndTools() {
     const auto scanned=Ucal::Manager::scanBackendDirectory(directory.path());
     QCOMPARE(scanned.packages.size(),1); QVERIFY(scanned.diagnostics.isEmpty());
     object.remove("discoveryLibrary");
+    object.insert("config_list_layout", "native");
+    QVERIFY(!Ucal::Manager::parseBackendPlugin(object,manifest,package,error));
+    object.insert("schema", "org.ucal.backend-package/5");
+    QVERIFY2(Ucal::Manager::parseBackendPlugin(object,manifest,package,error),qPrintable(error));
+    QCOMPARE(package.configListLayout, QStringLiteral("native"));
+    QVERIFY(package.managerVersion.isEmpty());
+    object.insert("manager_version", "1.2.3-rc.1+build.4");
+    QVERIFY2(Ucal::Manager::parseBackendPlugin(object,manifest,package,error),qPrintable(error));
+    QCOMPARE(package.managerVersion, QStringLiteral("1.2.3-rc.1+build.4"));
+    object.insert("manager_version", 123);
+    QVERIFY(!Ucal::Manager::parseBackendPlugin(object,manifest,package,error));
+    object.remove("manager_version");
+    QVERIFY2(Ucal::Manager::parseBackendPlugin(object,manifest,package,error),qPrintable(error));
+    package.configurationPath = directory.filePath("layout.ini");
+    QVERIFY2(Ucal::Manager::saveBackendPluginChannels(package, {}, &error), qPrintable(error));
+    QFile layoutFile(package.configurationPath);
+    QVERIFY(layoutFile.open(QIODevice::ReadOnly));
+    QTextStream layoutText(&layoutFile);
+    layoutText.setAutoDetectUnicode(true);
+    QVERIFY(layoutText.readAll().contains(QStringLiteral("config_list_layout=native")));
+    object.insert("config_list_layout", "unknown");
+    QVERIFY(!Ucal::Manager::parseBackendPlugin(object,manifest,package,error));
+    object.remove("config_list_layout");
     QVERIFY(Ucal::Manager::parseBackendPlugin(object,manifest,package,error));
     QCOMPARE(Ucal::Manager::loadBackendPluginChannels(package).size(), 1); // vendor default logical entry
     object.insert("mode","j2534");
@@ -3474,7 +3497,7 @@ void ManagerModelTest::productStateLabelsRemainTruthful() {
         QCOMPARE(wordmark->text(), QStringLiteral("UCAL Manager"));
         const auto* version = compact.findChild<QLabel*>(QStringLiteral("sidebarVersionLabel"));
         QVERIFY(version != nullptr);
-        QCOMPARE(version->text(), QStringLiteral("UCAL Manager 0.9.0"));
+        QCOMPARE(version->text(), QStringLiteral("UCAL Manager 0.9.1"));
         QVERIFY(!version->wordWrap());
         QVERIFY(version->fontMetrics().horizontalAdvance(version->text()) <= version->width());
         QVERIFY(wordmark->fontMetrics().horizontalAdvance(wordmark->text()) <= wordmark->width());
